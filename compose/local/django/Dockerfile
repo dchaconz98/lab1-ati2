@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM python:3.10.5
+FROM python:3.11.3
 
 # Don’t delete the downloaded apt packages
 RUN rm -f /etc/apt/apt.conf.d/docker-clean
