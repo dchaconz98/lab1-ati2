@@ -1,0 +1,91 @@
+{% extends "../../base.html" %}
+{% load i18n %}
+
+{% block content %}
+    <section>
+        <h2 class="text-center pb-4"> {% trans "Empresas de la corporación X" %}<h2>
+        <form method="POST" class="container d-grid gap-3 pb-4">
+            {% csrf_token %}
+            <section class="row">
+                <section class="d-flex justify-content-between mb-2">
+                    <h2>{% trans "Gestiona empresas" %}</h2>
+                    <a href="{% url 'empresa:create-business' %}">
+                        <button type="button" class="btn btn-primary">
+                            <i class="bi bi-plus-lg"></i>
+                        </button>
+                    </a>
+                </section>
+
+                <table class="table table-success table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                {% trans "Nombre" %}
+                            </th>
+                            <th>
+                                {% trans "País" %}
+                            </th>
+                            <th>
+                                {% trans "RIF" %}
+                            </th>
+                            <th>
+                                {% trans "Acciones" %}
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for business in object_list %}
+                            <tr>
+                                <td>
+                                    {{ business.nombre }}
+                                </td>
+                                <td>
+                                    {{ business.pais }}
+                                </td>
+                                <td>
+                                    {{ business.id_tributaria }}
+                                </td>
+                                <td class="d-flex">
+                                    <a href="{% url 'empresa:business-details' pk=business.id %}">
+                                        <button type="button" class="me-2 btn btn-info">
+                                            <i class="bi bi-search"></i>
+                                        </button>
+                                    </a>
+                                    <a href="{% url 'empresa:edit-business' pk=business.id %}">
+                                        <button type="button" class="mx-2 btn btn-primary">
+                                            <i class="bi bi-pencil-square"></i>
+                                        </button>
+                                    </a>
+                                    <a href="{% url 'empresa:delete-business' pk=business.id %}">
+                                        <button type="button" class="mx-2 btn btn-danger">
+                                            <i class="bi bi-x"></i>
+                                        </button>
+                                    </a>
+                                    <a href="{% url 'clients' business_id=business.id %}">
+                                        <button type="button" class="mx-2 btn btn-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="{% trans 'Clientes' %}">
+                                            <i class="bi bi-person"></i>
+                                        </button>
+                                    </a>
+                                    <a href="{% url 'empresa:list-employee' business_id=business.id %}">
+                                        <button type="button" class="mx-2 btn btn-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="{% trans 'Empleados' %}">
+                                            <i class="bi bi-person-check"></i>
+                                        </button>
+                                    </a>
+                                    <a href="{%url "listProveedor"%}?empresa={{ business.id }}" >
+                                        <button type="button" class="mx-2 btn btn-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="{% trans 'Proveedores' %}">
+                                            <i class="bi bi-briefcase"></i>
+                                        </button>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <section class="d-flex justify-content-center w-100">
+                    {% include "../../common/pagination.html" with is_paginated=is_paginated paginator=paginator page_obj=page_obj %}
+                </section>
+            </section>
+        </form>
+    </section>
+{% endblock %}

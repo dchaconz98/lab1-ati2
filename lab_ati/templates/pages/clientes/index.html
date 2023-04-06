@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block content %}
+    <div class="general-container">
+        <div class="container d-grid gap-3 pb-4">
+            <h2 class="text-center pb-4">{% trans "Lista de clientes" %}</h2>
+            <div class="d-flex justify-content-between mb-2">
+                <h2>{% trans "Gestiona clientes" %}</h2>
+                <a  href="{% url 'create-client' business_id=business_id %}">
+                    <button type="button" class="btn btn-primary">
+                        <i class="bi bi-plus-lg"></i>
+                    </button>
+                </a>
+            </div>
+            <div class="row">
+                <table class="table table-success table-striped">
+                    <thead>
+                        <tr>
+                            <th>{% trans 'Nombre completo' %}</th>
+                            <th>{% trans 'Tipo' %}</th>
+                            <th>{% trans 'País' %}</th>
+                            <th>{% trans 'Acciones' %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for cliente in clientes %}
+                        <tr>
+                            <td>{{ cliente.nombre }}</td>
+                            <td>{{ cliente.get_tipo_display }}</td>
+                            <td>{{ cliente.pais }}</td>
+                            <td class="d-flex">
+                                <a href="{% url 'detail-client' business_id=business_id id=cliente.id %}" >
+                                    <button type="button" class="mx-2 btn btn-info">
+                                        <i class="bi bi-search"></i>
+                                    </button>
+                                </a>
+                                <a href="{% url 'edit-client' business_id=business_id id=cliente.id %}">
+                                    <button type="button" class="mx-2 btn btn-primary">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </button>
+                                </a>
+                                <a href="{%  url 'delete-client' business_id=business_id id=cliente.id %}">
+                                    <button type="button" class="mx-2 btn btn-danger">
+                                        <i class="bi bi-person-x"></i>
+                                    </button>
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

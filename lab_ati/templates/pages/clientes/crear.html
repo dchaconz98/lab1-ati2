@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block content %}
+    <div>
+        {% include "../../common/navigation-bar.html" %}
+        <h2 class="text-center pb-4">
+            {% trans "Crea a un cliente con información" %}
+        </h2>
+        {% include "pages/clientes/form.html" %}
+    </div>
+{% endblock content %}

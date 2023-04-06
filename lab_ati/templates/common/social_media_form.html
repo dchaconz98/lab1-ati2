@@ -1,0 +1,47 @@
+{{ socialm_formset.management_form }}
+{% load i18n %}
+
+<section class="d-grid">
+  <section class="row">
+    <section class="col input-group">
+      <section class="d-grid gap-3" id="{{socialm_formset.prefix}}" data-editing="{{editing_social}}">
+
+        {% if editing_social %}
+          {# this is an area to hide the formsets to delete #}
+          <section class="d-none" id="to-delete"> 
+
+          </section>
+        {% endif %}
+      {% for socialm_form in socialm_formset %}
+        {{ socialm_form.id }}
+        <section class="row" id="">
+          <section class="col input-group">
+            <label for="{{ socialm_form.nombre.id_for_label }}" class="input-group-text">{% trans 'Red social' %}</label>
+            {{ socialm_form.nombre }}
+          </section>
+          <section class="col input-group">
+            <label for="{{ socialm_form.valor.id_for_label }}" class="input-group-text">{% trans 'Valor' %}</label>
+            {{ socialm_form.valor }}
+          </section>
+          <section class="col input-group btn-group">
+
+            {% if editing_social %}
+              <div class="d-none">
+                {{ socialm_form.DELETE }}
+              </div>
+            {% endif %}
+
+            <button type="button" class="btn btn-danger" data-btn-type="socialNetworkRemoveButton">
+              <i class="bi bi-trash"></i>
+            </button>
+
+            <button type="button" class="btn btn-primary" data-btn-type="socialNetworkAddButton">
+              <i class="bi bi-plus"></i>
+            </button>
+          </section>
+        </section>
+      {% endfor %}
+      </section>
+    </section>
+  </section>
+</section>

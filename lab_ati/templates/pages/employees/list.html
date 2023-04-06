@@ -1,0 +1,79 @@
+{% extends "../../base.html" %}
+{% load i18n %}
+
+{% block content %}
+<section class="general-container">
+    <h2 class="text-center pb-4">{% trans "Lista de empleados" %}</h2>
+    <form method="POST" class="container d-grid gap-3 pb-4">
+        {% csrf_token %}
+
+        <section class="row">
+            <section class="d-flex justify-content-between mb-2">
+                <h2>{% trans "Gestiona empleados"%}</h2>
+                <a href="{% url 'empresa:create-employee' business_id=business_id %}">
+                    <button type="button" class="btn btn-primary">
+                        <i class="bi bi-plus-lg"></i>
+                    </button>
+                </a>
+            </section>
+            
+            <table class="table table-success table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            {% trans "ID" %}
+                        </th>
+                        <th>
+                            {% trans "Nombre" %}
+                        </th>
+                        <th>
+                            {% trans "Cedula de identidad o pasaporte" %}
+                        </th>
+                        <th>
+                            {% trans "Acciones" %}
+                        </th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    {% for employee in object_list %}
+                    <tr>
+                        <td>
+                            {{ employee.id }}
+                        </td>
+                        <td>
+                            {{ employee.nombre }}            
+                        </td>
+                        <td>
+                            {{ employee.ci }}            
+                        </td>
+                        <td class="d-flex">
+                            <a href="{% url 'empresa:detail-employee' business_id=business_id pk=employee.id %}">
+                                <button type="button" class="mx-2 btn btn-info">
+                                    <i class="bi bi-search"></i>
+                                </button>
+                            </a>
+                            <a href="{% url 'empresa:edit-employee' business_id=business_id pk=employee.id %}">
+                                <button type="button" class="mx-2 btn btn-primary">
+                                    <i class="bi bi-pencil-square"></i>
+                                </button>
+                            </a>
+                            <a href="{% url 'empresa:delete-employee' business_id=business_id pk=employee.id %}">
+                                <button type="button" class="mx-2 btn btn-danger">
+                                    <i class="bi bi-person-x"></i>
+                                </button>
+                            </a>
+                        </td>
+                    </tr>   
+                    {% endfor %}
+                </tbody>
+            </table>
+            <section class="d-flex justify-content-center w-100">
+                {% include "../../common/pagination.html" with is_paginated=is_paginated paginator=paginator page_obj=page_obj %}
+            </section>
+        </section>
+    </form>
+</section>
+{% endblock content %}
+{% block inline_javascript %}
+{% endblock %}

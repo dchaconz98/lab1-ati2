@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block content %}
+    <div class="container">
+        {% include "../../common/navigation-bar.html" %}
+        <h2 class="text-center pb-4">{% trans "Información del cliente" %}</h2>
+        <a class="btn btn-primary" href="{% url 'clients' business_id=business_id %}">Volver</a>
+        {% csrf_token %}
+        <div class="row">
+            {% for field in form %}
+                {% if field.name == 'empresa' %}
+                <div style="display: none;">
+                {% else %}
+                <div class="col-6">
+                {% endif %}
+                    <label class="form-label">{{ field.label }}:</label>
+                    <input 
+                        type="{{ field.field.widget.input_type }}"
+                        class="form-control" 
+                        name="{{ field.name }}"
+                        aria-describedby="helpId" 
+                        placeholder="{{ field.label }}"
+                        value="{{ field.value | default:'' }}"
+                        disabled
+                    > 
+                </div>
+            {% endfor %}
+            <div class="row">
+                <div class="col input-group">
+                    <h5>{% trans "Redes Sociales" %}</h5>
+                    <ul class="list-group list-group w-100" id="socialNetworkList" ></ul>
+                </div>
+            </div>
+            <div class="row">
+                {% for social_media in social_medias %}
+                    <div class="col-6">
+                        <label class="form-label">{{ social_media.nombre }}:</label>
+                        <input 
+                            type="{{ field.field.widget.input_type }}"
+                            class="form-control" 
+                            name="{{ field.name }}"
+                            aria-describedby="helpId" 
+                            placeholder="{{ field.label }}"
+                            value="{{ social_media.valor }}"
+                            disabled
+                        > 
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}
