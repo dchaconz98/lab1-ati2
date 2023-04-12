@@ -1,0 +1,82 @@
+{% load i18n %}
+<form enctype="multipart/form-data" method="post"  class="container d-grid gap-3 pb-4">
+    {% csrf_token %}
+    <div class="row">
+        {% for field in form %}
+            {% if field.name == 'empresa' %}
+            <div style="display: none;" class="col-0">
+            {% else %}
+            <div class="col-6" style="margin-bottom: 15px;">
+            {% endif %}
+                <div class="col input-group">
+
+                    {% if field.name == 'tipo' %}
+                        <label class="input-group-text">{% trans "Tipo" %}</label>
+                        <select 
+                            class="form-select" 
+                            aria-label="Default select example"
+                            name="{{ field.name }}"
+                            placeholder="{{ field.label }}" 
+                            value="{{ field.value | default:'' }}"
+                        >
+                            <option value="LE" {% if field.value == 'LE' %} selected {% endif %}>
+                                <h5>{% trans "Labora empresa" %}</h5>
+                            </option>
+                            <option value="SO" {% if field.value == 'SO' %} selected {% endif %}>
+                                <h5>{% trans "Estudiante" %}</h5>
+                            </option>
+                            <option value="JR" {% if field.value == 'JR' %} selected {% endif %}>
+                                <h5>{% trans "Otro" %}</h5>
+                            </option>
+                        </select>
+                    {% else %}
+                        <label class="input-group-text">{{ field.label }}</label>
+                        <input 
+                            type="{{ field.widget.input_type }}"
+                            class="form-control" 
+                            name="{{ field.name }}"
+                            aria-describedby="helpId" 
+                            placeholder="{{ field.label }}"
+                            {% if field.name == 'empresa' %}
+                                value="{{ business_id }}"
+                            {% else %}
+                                value="{{ field.value | default:'' }}"
+                            {% endif %}
+                            Required
+                        >
+                    {% endif %}
+                    <span class="text-danger text-xs mx-2">
+                        {{ field.errors }}
+                    </span>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="row">
+        <div class="col input-group">
+            <h5>{% trans "Redes Sociales" %}</h5>
+            <ul class="list-group list-group w-100" id="socialNetworkList" ></ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col input-group">
+            {% include "common/social_media_form.html" with socialm_formset=socialm_formset%}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col input-group">
+            <input 
+                class="btn btn-primary"
+                type="submit"
+                value={% trans "Enviar" %}
+            >
+        </div>
+    </div>
+</form>
+{% block inline_javascript %}
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            new SocialMediaController();
+        });
+    </script>
+{% endblock %}

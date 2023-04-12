@@ -1,0 +1,20 @@
+[
+{
+    "model": "cliente.cliente",
+    "fields": {
+        "ciudad": "Caracas",
+        "pais": "Venezuela",
+        "nombre": "Edgar Linares",
+        "tipo": "LE",
+        "empcompany": "OpenLearning",
+        "cargo": "CTO",
+        "empresa": null,
+        "personal_email": "edlin@gmail.com",
+        "tlf_celular": "58-0414-901-80-14",
+        "whatsapp": "58-414-901-80-14",
+        "servicio_ofrecido": "Curso Windows office",
+        "curso_interes": "PHP",
+        "frecuencia": "1 vez a la semana"
+    }
+}
+]

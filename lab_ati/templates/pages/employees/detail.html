@@ -1,0 +1,39 @@
+{% extends "../../base.html" %}
+{% load i18n %}
+
+{% block content %}
+<section class="general-container w-100">
+    {% include "../../common/navigation-bar.html" with back_link=request.META.HTTP_REFERER list_link="" %}
+    <h2 class="text-center pb-4">{% trans "Información del empleado" %}</h2>
+    <section class="card">
+        <section class="card-body">
+            <p class="card-text"> {% trans 'Nombre' %}: {{ object.nombre }} {{ object.apellido }}</p>
+            <p class="card-text">{% trans 'Cedula de identidad o nro de pasaporte' %}: {{ object.ci }} </p>
+            <p class="card-text">{% trans 'Empresa a la que pertenece' %}: {{ object.empresa }} </p>
+            <p class="card-text">{% trans 'Cargo' %}: {{ object.cargo }} </p>
+            <p class="card-text">{% trans 'Teléfono local' %}: {{ object.tlf_local }} </p>
+            <p class="card-text">{% trans 'Empresa a la que pertenece' %}: {{ object.tlf_celular }} </p>
+            <p class="card-text">{% trans 'País' %}: {{ object.pais }} </p>
+            <p class="card-text">{% trans 'Ciudad' %}: {{ object.ciudad }} </p>
+            <p class="card-text">{% trans 'Modelo de contratación' %}: {{ object.modalidad_contratacion }} </p>
+
+            <section class="d-flex justify-content-center">
+                <a href="{% url 'empresa:edit-employee' business_id=business_id pk=object.id %}">
+                    <button class="btn btn-primary">
+                        {% trans 'Editar' %}
+                    </button>
+                </a>
+                <a href="{% url 'empresa:delete-employee' business_id=business_id pk=object.id %}"" class="mx-2">
+                    <button class="btn btn-danger">
+                        {% trans 'Eliminar' %}
+                    </button>
+                </a>
+            </section>
+        </section>
+      </section>
+</section>
+{% endblock content %}
+{% block inline_javascript %}
+<script>
+</script>
+{% endblock %}

@@ -1,0 +1,219 @@
+{% extends "../../base.html" %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+{% block content %}
+<section class="general-container w-100">
+    {% include "../../common/navigation-bar.html" %}
+    <h2 class="text-center pb-4">
+        {% if object == None %}
+            {% trans "Crea a un empleado con información" %}
+        {% else %}
+            {% trans "Edita la información de un empleado" %}
+        {% endif %}
+        | {{empresa.nombre}}
+    </h2>
+    <form method="POST" class="container d-grid gap-3 pb-4">
+        {% csrf_token %}
+        <section class="row">
+            <section class="col input-group">
+                <label for="{{ form.nombre.id_for_label }}" class="input-group-text">{{ form.nombre.label_tag }}</label>
+                {{ form.nombre }}
+                {% for error in form.nombre.errors %}
+                    <span class="text-danger text-xs">
+                        <i class="bi bi-exclamation-octagon"></i>
+                        {{ error }}
+                    </span>
+                {% endfor %}
+            </section>
+            <section class="col input-group">
+                <label for="{{ form.nombre.id_for_label }}" class="input-group-text">{{ form.apellido.label_tag }}</label>
+                {{ form.apellido }}
+                {% for error in form.nombre.errors %}
+                    <span class="text-danger text-xs">
+                        <i class="bi bi-exclamation-octagon"></i>
+                        {{ error }}
+                    </span>
+                {% endfor %}
+            </section>
+        </section>
+
+        <section class="row">
+
+            <section class="col">
+                <section class="input-group">
+                    <label for="{{ form.ci.id_for_label }}" class="input-group-text">{{ form.cargo.label_tag }}</label>
+                    {{ form.cargo }}
+                </section>
+                {% for error in form.cargo.errors %}
+                    <span class="text-danger text-xs">
+                        <i class="bi bi-exclamation-octagon"></i>
+                        {{ error }}
+                    </span>
+                {% endfor %}
+            </section>
+
+            <section class="col">
+                <section class="input-group">
+                    <label for="{{ form.ci.id_for_label }}" class="input-group-text">{{ form.ci.label_tag }}</label>
+                    {{ form.ci }}
+                </section>
+                <section class="d-flex flex-column">
+                    <span class="text-info text-xs">
+                        <i class="bi bi-info-circle"></i>
+                        {% trans 'Formatos válidos de número de cédula o pasaporte: V-12.345.678, ABC123DEF4' %}
+                    </span>
+                    {% for error in form.ci.errors %}
+                        <span class="text-danger text-xs">
+                            <i class="bi bi-exclamation-octagon"></i>
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                </section>
+            </section>
+        </section>
+
+        <section class="row">
+            <section class="col">
+                <section class="input-group">
+                    <label class="input-group-text">{{ form.modalidad_contratacion.label_tag }}</label>
+                    {{ form.modalidad_contratacion }}
+                </section>
+                {% for error in form.modalidad_contratacion.errors %}
+                    <span class="text-danger text-xs">
+                        <i class="bi bi-exclamation-octagon"></i>
+                        {{ error }}
+                    </span>
+                {% endfor %}
+            </section>
+            <section class="col">
+                <section class="input-group">
+                    <label class="input-group-text">{{ form.email_emp.label_tag }}</label>
+                    {{ form.email_emp }}
+                </section>
+                {% for error in form.email_emp.errors %}
+                    <span class="text-danger text-xs">
+                        <i class="bi bi-exclamation-octagon"></i>
+                        {{ error }}
+                    </span>
+                {% endfor %}
+            </section>
+        </section>
+
+        <section class="row">
+            <section class="col">
+                <section class="input-group">
+                    <label class="input-group-text">{{ form.email_p.label_tag }}</label>
+                    {{ form.email_p }}
+                </section>
+                {% for error in form.email_p.errors %}
+                    <span class="text-danger text-xs">
+                        <i class="bi bi-exclamation-octagon"></i>
+                        {{ error }}
+                    </span>
+                {% endfor %}
+            </section>
+            <section class="col">
+                <section class="input-group">
+                    <label class="input-group-text">{{ form.tlf_local.label_tag }}</label>
+                    {{ form.tlf_local }}
+                </section>
+                <section class="d-flex flex-column">
+                    <span class="text-info text-xs">
+                        <i class="bi bi-info-circle"></i>
+                        {% trans 'Formatos válidos de número de teléfono: +58-0212-123-1234, +58-0212-123-12-34, +5802121231234' %}
+                    </span>
+                    {% for error in form.tlf_local.errors %}
+                        <span class="text-danger text-xs">
+                            <i class="bi bi-exclamation-octagon"></i>
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                </section>
+            </section>
+        </section>
+
+        <section class="row">
+            <section class="col">
+                <section class="input-group">
+                    <label class="input-group-text">{{ form.tlf_celular.label_tag }}</label>
+                    {{ form.tlf_celular }}
+                </section>
+                <section class="d-flex flex-column">
+                    <span class="text-info text-xs">
+                        <i class="bi bi-info-circle"></i>
+                        {% trans 'Formatos válidos de número de teléfono: +58-0212-123-1234, +58-0212-123-12-34, +5802121231234' %}
+                    </span>
+                    {% for error in form.tlf_celular.errors %}
+                        <span class="text-danger text-xs">
+                            <i class="bi bi-exclamation-octagon"></i>
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                </section>
+            </section>
+            <section class="col">
+                <section class="input-group">
+                    <label class="input-group-text">{{ form.ciudad.label_tag }}</label>
+                    {{ form.ciudad }}
+                </section>
+                {% for error in form.ciudad.errors %}
+                    <span class="text-danger text-xs">
+                        <i class="bi bi-exclamation-octagon"></i>
+                        {{ error }}
+                    </span>
+                {% endfor %}
+            </section>
+        </section>
+
+        <section class="row"">
+            <section class="col">    
+                <section class="input-group">
+                    <label class="input-group-text">{{ form.pais.label_tag }}</label>
+                    {{ form.pais }}
+                </section>   
+                {% for error in form.pais.errors %}
+                    <span class="text-danger text-xs">
+                        <i class="bi bi-exclamation-octagon"></i>
+                        {{ error }}
+                    </span>
+                {% endfor %}
+            </section>
+            
+            <input type="hidden" name="empresa" value="{{ business_id }}" />
+        </section>
+    
+        <section class="row">
+            <section class="col input-group">
+                <h5>Redes sociales</h5>
+                <ul class="list-group list-group w-100" id="socialNetworkList" ></ul>
+            </section>
+        </section>
+
+        <section class="row">
+            <section class="col input-group">
+                {% include "common/social_media_form.html" with socialm_formset=socialm_formset%}
+            </section>
+        </section>
+
+        <section class="row">
+            <section class="col">
+                <button class="btn btn-primary">
+                    {% if object == None %}
+                        {% trans "Crear empleado" %}
+                    {% else %}
+                        {% trans "Editar empleado" %}
+                    {% endif %}
+                </button>
+            </section>
+        </section>
+    </form>
+</section>
+{% endblock content %}
+{% block inline_javascript %}
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            new SocialMediaController();
+        });
+    </script>
+{% endblock %}

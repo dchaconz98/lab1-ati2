@@ -1,0 +1,37 @@
+[
+{
+    "model": "proveedor.proveedor",
+    "pk": "a66da694-ccf7-4f5a-93be-28c03fe0d9ef",
+    "fields": {
+        "ciudad": "Seattle-Washingthon",
+        "pais": "Estados Unidos",
+        "nombre": "AWS",
+        "id_tributaria": "TIN- 1388870295",
+        "email": "customeraws@gmail.com",
+        "direccion": "4080 Stevens Creek Blvd\r\nSan Jose, CA 95129",
+        "web_site": "https://www.banesco.com.pa/",
+        "servicio_proporciona": "Servicios de IT, Marketing\r\nComercio electrónico",
+        "representante": "Jose Sanchez",
+        "pais_representante": "Venezuela",
+        "cargo": "CTO (Chief Techonology Officer)",
+        "email_representante": "jose.sanchez@openlearn1.com",
+        "email_personal_representante": "nirvana01@gmail.com",
+        "tlf": "1-800-925-6278",
+        "tlf_representate": "+1-317-938-5657",
+        "tlf_local": "No tiene",
+        "empresa": null
+    }
+},
+{
+    "model": "empresa.socialmedia",
+    "pk": "3d572aeb-1cfd-4a61-855e-6a2cada37db5",
+    "fields": {
+        "nombre": "Facebook",
+        "valor": "@amazon",
+        "content_type": [
+            "proveedor",
+            "proveedor"
+        ],
+        "object_id": "a66da694-ccf7-4f5a-93be-28c03fe0d9ef"
+    }
+}]

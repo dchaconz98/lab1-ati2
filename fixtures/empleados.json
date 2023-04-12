@@ -1,0 +1,92 @@
+[
+{
+    "model": "empresa.empleado",
+    "pk": "1",
+    "fields": {
+        "nombre": "Juan",
+        "apellido": "Suarez",
+        "cargo": "Gerente",
+        "ci": "V-20567345",
+        "modalidad_contratacion": "HP",
+        "email_emp": "juanemp1@test.com",
+        "email_p": "juan1@test.com",
+        "tlf_local": "58-0414-901-80-14",
+        "tlf_celular": "58-0414-901-80-14",
+        "ciudad": "Valencia",
+        "pais": "Venezuela",
+        "empresa": "ae5b2a62-717e-40ba-8e94-0c8536b8db85"
+    }
+},
+{
+    "model": "empresa.empleado",
+    "pk": "2",
+    "fields": {
+        "nombre": "Jose",
+        "apellido": "Sanchez",
+        "cargo": "CTO",
+        "ci": "V-12.345.678",
+        "modalidad_contratacion": "FIJO",
+        "email_emp": "jose.sanchez@openenglish.com",
+        "email_p": "nirvana01@gmail.com",
+        "tlf_local": "+212-235-83-33",
+        "tlf_celular": "+58-412-333-3333",
+        "ciudad": "Caracas- Distrito Capital",
+        "pais": "Venezuela",
+        "empresa": "ae5b2a62-717e-40ba-8e94-0c8536b8db85"
+    }
+},
+{
+    "model": "empresa.empleado",
+    "pk": "3",
+    "fields": {
+        "nombre": "Angel",
+        "apellido": "Gil",
+        "cargo": "Arquitecto de soluciones",
+        "ci": "V-14.345.678",
+        "modalidad_contratacion": "HP",
+        "email_emp": "angel.gil@openenglish.com",
+        "email_p": "agil@gmail.com",
+        "tlf_local": "+212-362-82-77",
+        "tlf_celular": "+58-414-12-45-67",
+        "ciudad": "Caracas",
+        "pais": "Venezuela",
+        "empresa": "85510d49-bd65-4f8d-b837-87772fdce574"
+    }
+},
+{
+    "model": "empresa.empleado",
+    "pk": "4",
+    "fields": {
+        "nombre": "Luis",
+        "apellido": "Rojas",
+        "cargo": "Desarrollador",
+        "ci": "XDC273618",
+        "modalidad_contratacion": "HP",
+        "email_emp": "luis.rojas@openenglish.com",
+        "email_p": "luirr@gmail.com",
+        "tlf_local": "+507 800-1300",
+        "tlf_celular": "+50769305188",
+        "ciudad": "Ciudad de Panamá",
+        "pais": "Panamá",
+        "empresa": "85510d49-bd65-4f8d-b837-87772fdce574"
+    }
+},
+{
+    "model": "empresa.empleado",
+    "pk": "5",
+    "fields": {
+        "nombre": "George",
+        "apellido": "Iceman",
+        "cargo": "Desarrollador",
+        "ci": "XDC7778900",
+        "modalidad_contratacion": "HP",
+        "email_emp": "george.iceman@openenglish.com",
+        "email_p": "georgei@gmail.com",
+        "tlf_local": "+1-317-938-5657",
+        "tlf_celular": "+1-317-938-5657",
+        "ciudad": "Alberta",
+        "pais": "Canadá",
+        "empresa": "85510d49-bd65-4f8d-b837-87772fdce574"
+    }
+}
+]

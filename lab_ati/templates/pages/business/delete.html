@@ -1,0 +1,30 @@
+{% extends "../../base.html" %}
+{% load i18n %}
+
+{% block content %}
+<section class="general-container w-100 h-100">
+    {% include "../../common/navigation-bar.html" %}
+    <section class="w-100 d-flex flex-column justify-content-center align-items-center">
+        <section class="rounded p-4 bg-white mt-4">
+            <h2 class="text-center pb-4">{% trans "Borrar empresa" %}</h2>
+            <form method="post">
+                {% csrf_token %}
+                <p> {% trans "¿Deseas borrar la empresa" %} {{ object.nombre }}?</p>
+                <section class="w-100 d-flex justify-content-center">
+                    <button class="mx-2 btn btn-danger">
+                        {% trans "Borrar" %}
+                    </button>
+
+                    <a href="{% url 'empresa:business-list' %}">
+                        <button class="btn btn-light" type="button">
+                            {% trans "Cancelar" %}
+                        </button>
+                    </a>
+                </section>
+            </form>
+        </section>
+    </section>
+</section>
+{% endblock content %}
+{% block inline_javascript %}
+{% endblock %}

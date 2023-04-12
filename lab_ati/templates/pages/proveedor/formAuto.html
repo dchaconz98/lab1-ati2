@@ -1,0 +1,87 @@
+{% load i18n %}
+{% if data.update == True %}
+<form
+  class="container d-grid gap-3 pb-4"
+  enctype="multipart/form-data"
+  action="/proveedor/modificar?proveedor={{data.proveedor.id}}" 
+  method="post"
+>
+{% else %}
+<form
+  class="container d-grid gap-3 pb-4"
+  enctype="multipart/form-data"
+  action="/proveedor/crear?empresa={{data.empresa.id}}" 
+  method="post"
+>
+{% endif %}
+  {% csrf_token %}
+  <div class="section-box">
+    <p class="fw-bold fs-5">{% trans 'Información del proveedor' %}</p>
+    {% for campo in data.formulario %}
+    {% if campo.label != 'Empresa' and campo.label != 'Business'  %}
+    {% if campo.label|slice:"-13:" != "representante" and campo.label|slice:':15' != 'Representatives'%}
+    <section class="row mb-3">
+      <section class="col input-group">
+      <label class="input-group-text">{{campo.label}}</label>
+        <input
+        type="{{campo.field.widget.input_type}}"
+        class="form-control"
+        name="{{campo.name}}"
+        placeholder="{{campo.label}}"
+        value="{{data.proveedor|get_item:campo.name}}"
+        Required
+        />
+      </section>
+    </section>
+
+    {% endif %}
+    {% endif %}
+    {% endfor %}
+    <p>{% trans 'Redes sociales' %}</p>
+    {% include "common/social_media_form.html" with socialm_formset=data.socialMedia%}
+    <br/>
+    <p class="fw-bold fs-5">{% trans 'Información del representante' %}</p>
+
+    {% for campo in data.formulario %}
+    {% if campo.label != 'Empresa' and campo.label != 'Business'%}
+    {% if campo.label|slice:"-13:" == "representante" or campo.label|slice:':15' == 'Representatives'%} 
+    <section class="row mb-3">
+      <section class="col input-group">
+        <label class="input-group-text">{{campo.label}}</label>
+        <input
+        type="{{campo.field.widget.input_type}}"
+        class="form-control"
+        name="{{campo.name}}"
+        placeholder="{{campo.label}}"
+        value="{{data.proveedor|get_item:campo.name}}"
+        Required
+      />
+      </section>
+    </section>
+    {% endif %}
+    {% endif %}
+    {% endfor %}
+  
+    <p>{% trans 'Redes sociales' %}</p>
+    {% include "common/social_media_form.html" with socialm_formset=data.socialMediaRepresentante%}
+    <div class="mb-3" style="display: none;">
+      <label class="form-label">Empresa</label>
+      <input
+        type="select"
+        class="form-control"
+        name="empresa"
+        placeholder="Empresa"
+      />
+      <select name="empresa" id="id_empresa">
+        <option value="{{data.empresa.id}}" selected></option>
+      </select>
+      
+    </div>
+    
+  </div>
+  
+
+  <div class="d-grid gap-2 col-6 mx-auto form-button-box">
+    <button class="btn btn-primary" type="submit">{% trans "Guardar" %}</button>
+  </div>
+</form>

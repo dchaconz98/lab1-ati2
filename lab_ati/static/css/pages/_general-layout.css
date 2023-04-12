@@ -1,0 +1,35 @@
+.general-container{
+    max-width: 1440px;
+}
+.general-height{
+    height: calc(100vh - 56px);
+}
+.container-height{
+    height: calc(100% - 64px);
+}
+.scroll-x{
+    overflow-y: auto;
+}
+.h-16{
+    height: 64px;
+}
+.h-screen{
+    height: 100vh;
+}
+.mt-16{
+    margin-top: 64px;
+}
+.z-40{
+    z-index: 40;
+}
+.bg-main{
+    background-color: #F0F5F9;
+}
+.table{
+    font-size:20px;
+    vertical-align: middle;
+}
+header > section > ul > li > a{
+    text-decoration: none;
+    color: inherit;
+}

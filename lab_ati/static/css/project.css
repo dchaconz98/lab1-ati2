@@ -1,0 +1,61 @@
+/* These styles are generated from project.scss. */
+@import url('./components/_index.css');
+@import url('./pages/_index.css');
+@import url('_utils.css');
+
+.alert-debug {
+  color: black;
+  background-color: white;
+  border-color: #d6e9c6;
+}
+
+.alert-error {
+  color: #b94a48;
+  background-color: #f2dede;
+  border-color: #eed3d7;
+}
+
+.section-box {
+  margin-top: 7%;
+}
+
+.form-button-box {
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.one_line_flex {
+  display: flex;
+  flex-direction: row;
+}
+
+.one_line_flex .need_margin_lef {
+  margin-left: 3%;
+}
+
+#proveedor-list-header{
+  margin: 15px 0 20px 0;
+}
+
+#proveedor-list{
+  margin-top: 4%;
+}
+#proveedor-list ul {
+  list-style: none;
+  margin: 1% 10%;
+}
+
+#proveedor-list ul li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#proveedor-list ul li div a {
+  margin: 5px;
+}
+
+#proveedor-list ul li p{
+  align-self:center;
+  margin: 2% 0;
+}

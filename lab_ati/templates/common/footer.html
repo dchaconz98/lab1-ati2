@@ -1,0 +1,11 @@
+{% load static %}
+{% load i18n %}
+{% block footer %}
+    <footer class="w-100 px-4 py-2 d-flex justify-content-center align-items-center custom-footer">
+        <section class="flex-grow-1 d-flex justify-content-center align-items-center general-container">
+            <img src="{% static 'images/logo.png' %%}" width="40" height="40">
+            
+            <p class="mx-4 mb-0 h-6">{% trans 'Copyright' %} &#9400 2022 SA - {% trans 'Todos los derechos reservados' %}</p>
+        </section>
+    </footer>
+{% endblock %}

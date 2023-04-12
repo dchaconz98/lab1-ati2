@@ -1,0 +1,58 @@
+{% extends "../../base.html" %}
+{% load i18n %}
+
+{% block content %}
+<section>
+    {% include "../../common/navigation-bar.html" %}
+    <h2 class="text-center pb-4">{% trans "Información de la empresa" %}</h2>
+    <section class="card">
+        <section class="card-body">
+            <p class="card-text"> {% trans 'Nombre' %}: {{ object.nombre }}</p>
+            <p class="card-text"> {% trans 'Id Tributaria' %}: {{ object.id_tributaria }}</p>
+            <p class="card-text"> {% trans 'País' %}: {{ object.pais }}</p>
+            <p class="card-text"> {% trans 'Ciudad' %}: {{ object.ciudad }}</p>
+            <p class="card-text"> {% trans 'Dirección' %}: {{ object.direccion }}</p>
+            <p class="card-text"> {% trans 'Email' %}: {{ object.email }}</p>
+            <p class="card-text"> {% trans 'Sitio Web' %}: {{ object.web_site }}</p>
+            <p class="card-text"> {% trans 'Teléfono' %}: {{ object.telefono }}</p>
+            <p class="card-text"> {% trans 'Whatsapp' %}: {{ object.whatsapp }}</p>
+            <p class="card-text"> {% trans 'Servicio que le ofrecimos' %}: {{ object.servicio_ofrecido }}</p>
+            <p class="card-text"> {% trans 'Servicio que proporciona' %}: {{ object.servicio_proporciona }}</p>
+            <p class="card-text"> {% trans 'Frecuencia en que desea mantenerse informado' %}: {{ object.frecuencia }}</p>
+            <p class="card-text"> {% trans 'Cursos de interés' %}: {{ object.curso_interes }}</p>
+            {% if object.cliente_empresa %}
+                <p class="card-text"> {% trans 'Cliente de empresa' %}: {{ object.cliente_empresa }}</p>
+            {% endif %}
+            <section class="d-flex justify-content-center">
+                <a href="{% url 'empresa:edit-business' pk=object.id %}">
+                    <button class="btn btn-primary">
+                        {% trans 'Editar' %}
+                    </button>
+                </a>
+                <a href="{% url 'empresa:delete-business' pk=object.id %}" class="mx-2">
+                    <button class="btn btn-danger">
+                        {% trans 'Eliminar' %}
+                    </button>
+                </a>
+                <a href="{%url "clients" business_id=business_id%}" class="mx-2">
+                    <button class="btn btn-warning">
+                        {% trans 'Clientes' %}
+                    </button>
+                </a>
+                <a href="{% url "listProveedor"%}?empresa={{business_id }}" class="mx-2">
+                    <button class="btn btn-warning">
+                        {% trans 'Proveedores' %}
+                    </button>
+                </a>
+                <a href="{% url 'empresa:list-employee' business_id=object.id %}" class="mx-2">
+                    <button class="btn btn-warning">
+                        {% trans 'Empleados' %}
+                    </button>
+                </a>
+                
+            </section>
+            
+        </section>
+    </section>
+</section>
+{% endblock %}

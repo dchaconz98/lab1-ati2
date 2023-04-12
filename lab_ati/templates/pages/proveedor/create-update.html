@@ -1,0 +1,24 @@
+{% extends "base.html" %} 
+{% load i18n %}
+{% block content %} 
+{% include "../../common/navigation-bar.html" with back_link=request.META.HTTP_REFERER list_link=list_link %}
+{% if data.update == True %}
+<h2>{% trans "Modificar proveedor" %} {{data.proveedor.nombre}}</h2>
+{% else %}
+<h2>{% trans "Registro de Proveedor para empresa" %} {{ data.empresa.nombre}}</h2>
+{% endif %}
+
+<div class="container col-8 mx-auto" id="form-box">
+  {% include "pages/proveedor/formAuto.html" with data=data%}
+</div>
+
+{% endblock content %}
+{% block inline_javascript %}
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      new SocialMediaController("proveedorSocial");
+      // Aqui iria el id de las redes sociales del representante
+      new SocialMediaController("representanteSocial");
+    });
+    </script>
+{% endblock %}

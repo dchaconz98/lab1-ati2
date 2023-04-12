@@ -1,0 +1,132 @@
+[
+{
+    "model": "empresa.empresa",
+    "pk": "85510d49-bd65-4f8d-b837-87772fdce574",
+    "fields": {
+        "ciudad": "Caracas",
+        "pais": "Venezuela",
+        "nombre": "Digitel",
+        "id_tributaria": "j-12345678",
+        "email": "atencion.digitel@gmail.com",
+        "direccion": "Av Francisco de Miranda\r\nTorre Digitel. La Castellana\r\nLocales 1 al 14, PB",
+        "web_site": "http://www.digitel.com",
+        "servicio_ofrecido": "Curso Windows-Office",
+        "servicio_proporciona": "Teléfonos para la empresa",
+        "whatsapp": "+58-412-333-3333",
+        "telefono": "58-212-123-45-67",
+        "curso_interes": "PHP",
+        "frecuencia": "1 vez a la semana",
+        "cliente_empresa": null
+    }
+},
+{
+    "model": "empresa.empresa",
+    "pk": "ae5b2a62-717e-40ba-8e94-0c8536b8db85",
+    "fields": {
+        "ciudad": "San Jose - California",
+        "pais": "Estados Unidos",
+        "nombre": "Walmart",
+        "id_tributaria": "TIN- 2334567890",
+        "email": "atencion@walmart.com",
+        "direccion": "4080 Stevens Creek Blvd\r\nSan Jose, CA 95129",
+        "web_site": "http://www.walmart.com",
+        "servicio_ofrecido": "Desarorollo sitio Web",
+        "servicio_proporciona": "Suministros de comida",
+        "whatsapp": "+1-317-938-5657",
+        "telefono": "1-800-925-6278",
+        "curso_interes": "Ninguno",
+        "frecuencia": "2 veces por semana",
+        "cliente_empresa": null
+    }
+},
+{
+    "model": "empresa.empleado",
+    "pk": 1,
+    "fields": {
+        "ciudad": "Valencia",
+        "pais": "Venezuela",
+        "nombre": "Juan",
+        "apellido": "Suarez",
+        "ci": "V-20567345",
+        "cargo": "Gerente",
+        "empresa": "ae5b2a62-717e-40ba-8e94-0c8536b8db85",
+        "modalidad_contratacion": "HP",
+        "email_emp": "juanemp1@test.com",
+        "email_p": "juan1@test.com",
+        "tlf_celular": "58-0414-901-80-14",
+        "tlf_local": "58-0414-901-80-14"
+    }
+},
+{
+    "model": "empresa.empleado",
+    "pk": 2,
+    "fields": {
+        "ciudad": "Caracas- Distrito Capital",
+        "pais": "Venezuela",
+        "nombre": "Jose",
+        "apellido": "Sanchez",
+        "ci": "V-12.345.678",
+        "cargo": "CTO",
+        "empresa": "ae5b2a62-717e-40ba-8e94-0c8536b8db85",
+        "modalidad_contratacion": "FIJO",
+        "email_emp": "jose.sanchez@openenglish.com",
+        "email_p": "nirvana01@gmail.com",
+        "tlf_celular": "+58-412-333-3333",
+        "tlf_local": "+212-235-83-33"
+    }
+},
+{
+    "model": "empresa.empleado",
+    "pk": 3,
+    "fields": {
+        "ciudad": "Caracas",
+        "pais": "Venezuela",
+        "nombre": "Angel",
+        "apellido": "Gil",
+        "ci": "V-14.345.678",
+        "cargo": "Arquitecto de soluciones",
+        "empresa": "85510d49-bd65-4f8d-b837-87772fdce574",
+        "modalidad_contratacion": "HP",
+        "email_emp": "angel.gil@openenglish.com",
+        "email_p": "agil@gmail.com",
+        "tlf_celular": "+58-414-12-45-67",
+        "tlf_local": "+212-362-82-77"
+    }
+},
+{
+    "model": "empresa.empleado",
+    "pk": 4,
+    "fields": {
+        "ciudad": "Ciudad de Panamá",
+        "pais": "Panamá",
+        "nombre": "Luis",
+        "apellido": "Rojas",
+        "ci": "XDC273618",
+        "cargo": "Desarrollador",
+        "empresa": "85510d49-bd65-4f8d-b837-87772fdce574",
+        "modalidad_contratacion": "HP",
+        "email_emp": "luis.rojas@openenglish.com",
+        "email_p": "luirr@gmail.com",
+        "tlf_celular": "+50769305188",
+        "tlf_local": "+507 800-1300"
+    }
+},
+{
+    "model": "empresa.empleado",
+    "pk": 5,
+    "fields": {
+        "ciudad": "Alberta",
+        "pais": "Canadá",
+        "nombre": "George",
+        "apellido": "Iceman",
+        "ci": "XDC7778900",
+        "cargo": "Desarrollador",
+        "empresa": "85510d49-bd65-4f8d-b837-87772fdce574",
+        "modalidad_contratacion": "HP",
+        "email_emp": "george.iceman@openenglish.com",
+        "email_p": "georgei@gmail.com",
+        "tlf_celular": "+1-317-938-5657",
+        "tlf_local": "+1-317-938-5657"
+    }
+}
+]

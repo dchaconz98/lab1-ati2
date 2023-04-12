@@ -1,0 +1,16 @@
+.custom-header{
+    background-color: #79BFFB;
+}
+.custom-header__menu{
+    list-style: none;
+    max-width: max-content;
+}
+.custom-header__menu-item{
+    cursor: pointer;
+    border-bottom: solid 4px;
+    border-color: transparent;
+}
+.custom-header__menu-item:hover{
+    border-color: #1667D7;
+    transition: all 1s;
+}

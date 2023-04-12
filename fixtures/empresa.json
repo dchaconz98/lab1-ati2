@@ -1,0 +1,54 @@
+[
+{
+    "model": "empresa.empresa",
+    "pk": "85510d49-bd65-4f8d-b837-87772fdce574",
+    "fields": {
+        "ciudad": "Caracas",
+        "pais": "Venezuela",
+        "nombre": "Digitel",
+        "id_tributaria": "j-12345678",
+        "email": "atencion.digitel@gmail.com",
+        "direccion": "Av Francisco de Miranda\r\nTorre Digitel. La Castellana\r\nLocales 1 al 14, PB",
+        "web_site": "http://www.digitel.com",
+        "servicio_ofrecido": "Curso Windows-Office",
+        "servicio_proporciona": "Teléfonos para la empresa",
+        "whatsapp": "+58-412-333-3333",
+        "telefono": "58-212-123-45-67",
+        "curso_interes": "PHP",
+        "frecuencia": "1 vez a la semana"
+    }
+},
+{
+    "model": "empresa.socialmedia",
+    "pk": "481f0271-d8d5-4b77-a915-a7af13c85b8b",
+    "fields": {
+        "nombre": "Instagram",
+        "valor": "@digitel",
+        "content_type": [
+            "empresa",
+            "empresa"
+        ],
+        "object_id": "85510d49-bd65-4f8d-b837-87772fdce574"
+    }
+},
+{
+    "model": "empresa.empresa",
+    "pk": "ae5b2a62-717e-40ba-8e94-0c8536b8db85",
+    "fields": {
+        "ciudad": "San Jose - California",
+        "pais": "Estados Unidos",
+        "nombre": "Walmart",
+        "id_tributaria": "TIN- 2334567890",
+        "email": "atencion@walmart.com",
+        "direccion": "4080 Stevens Creek Blvd\r\nSan Jose, CA 95129",
+        "web_site": "http://www.walmart.com",
+        "servicio_ofrecido": "Desarorollo sitio Web",
+        "servicio_proporciona": "Suministros de comida",
+        "whatsapp": "+1-317-938-5657",
+        "telefono": "1-800-925-6278",
+        "curso_interes": "Ninguno",
+        "frecuencia": "2 veces por semana",
+        "cliente_empresa": null
+    }
+}
+]
