@@ -4,7 +4,7 @@
 
 {% block content %}
 <section class="general-container w-100">
-    {% include "../../common/navigation-bar.html" %}
+    {% include "../../common/navigation-bar.html" with enlace=list_link %}
     <h2 class="text-center pb-4">
         {% if object == None %}
             {% trans "Crea a un empleado con información" %}

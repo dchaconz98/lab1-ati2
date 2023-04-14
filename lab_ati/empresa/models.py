@@ -5,12 +5,13 @@ from django.utils.translation import gettext_lazy as _
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.core import validators
+from django_countries import countries
 
 # Create your models here.
 class DirABC(models.Model):
 
     ciudad = models.TextField(_("Ciudad"))
-    pais = models.TextField(_("Pais"))
+    pais = models.TextField( choices=countries )
     redes_sociales = GenericRelation(
         to="empresa.SocialMedia",
         related_query_name="redes_sociales"

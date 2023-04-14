@@ -3,7 +3,7 @@
 
 {% block content %}
 <section class="general-container w-100">
-    {% include "../../common/navigation-bar.html" with back_link=request.META.HTTP_REFERER list_link="" %}
+    {% include "../../common/navigation-bar.html" with back_link=request.META.HTTP_REFERER enlace=list_link %}
     <h2 class="text-center pb-4">{% trans "Información del empleado" %}</h2>
     <section class="card">
         <section class="card-body">
