@@ -13,7 +13,7 @@
                 {% else %}
                 <div class="col-6">
                 {% endif %}
-                    <label class="form-label">{{ field.label }}:</label>
+                    <label class="form-label">{% trans field.label %}:</label>
                     <input 
                         type="{{ field.field.widget.input_type }}"
                         class="form-control" 

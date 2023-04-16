@@ -1,4 +1,6 @@
 {% load i18n %}
+{% load countries %}
+{% get_countries as countries %}
 {% if data.update == True %}
 <form
   class="container d-grid gap-3 pb-4"
@@ -18,24 +20,41 @@
   <div class="section-box">
     <p class="fw-bold fs-5">{% trans 'Información del proveedor' %}</p>
     {% for campo in data.formulario %}
-    {% if campo.label != 'Empresa' and campo.label != 'Business'  %}
-    {% if campo.label|slice:"-13:" != "representante" and campo.label|slice:':15' != 'Representatives'%}
-    <section class="row mb-3">
-      <section class="col input-group">
-      <label class="input-group-text">{{campo.label}}</label>
-        <input
-        type="{{campo.field.widget.input_type}}"
-        class="form-control"
-        name="{{campo.name}}"
-        placeholder="{{campo.label}}"
-        value="{{data.proveedor|get_item:campo.name}}"
-        Required
-        />
-      </section>
-    </section>
+        {% if campo.label != 'Empresa' and campo.label != 'Business'  %}
+            {% if campo.label == 'Pais'%}
+            <section class="row mb-3">
+              <section class="col input-group">
+                <label class="input-group-text">{{ campo.label }}</label>
+                <select 
+                    class="form-select" 
+                    aria-label="Default select example"
+                    name="{{ field.name }}"
+                    placeholder="{{ field.label }}" 
+                    value="{{ countries }}"
+                >
+                {% for country in countries %}
+                    <option value="{{ country.code }}">{{ country.name }}</option>
+                {% endfor %}
+                </select>
+              </section>
+            </section>
+            {% elif campo.label|slice:"-13:" != "representante" and campo.label|slice:':15' != 'Representatives'%}
+              <section class="row mb-3">
+                <section class="col input-group">
+                <label class="input-group-text">{{campo.label}}</label>
+                  <input
+                  type="{{campo.field.widget.input_type}}"
+                  class="form-control"
+                  name="{{campo.name}}"
+                  placeholder="{{campo.label}}"
+                  value="{{data.proveedor|get_item:campo.name}}"
+                  Required
+                  />
+                </section>
+              </section>
 
-    {% endif %}
-    {% endif %}
+            {% endif %}
+        {% endif %}
     {% endfor %}
     <p>{% trans 'Redes sociales' %}</p>
     {% include "common/social_media_form.html" with socialm_formset=data.socialMedia%}
@@ -43,23 +62,40 @@
     <p class="fw-bold fs-5">{% trans 'Información del representante' %}</p>
 
     {% for campo in data.formulario %}
-    {% if campo.label != 'Empresa' and campo.label != 'Business'%}
-    {% if campo.label|slice:"-13:" == "representante" or campo.label|slice:':15' == 'Representatives'%} 
-    <section class="row mb-3">
-      <section class="col input-group">
-        <label class="input-group-text">{{campo.label}}</label>
-        <input
-        type="{{campo.field.widget.input_type}}"
-        class="form-control"
-        name="{{campo.name}}"
-        placeholder="{{campo.label}}"
-        value="{{data.proveedor|get_item:campo.name}}"
-        Required
-      />
-      </section>
-    </section>
-    {% endif %}
-    {% endif %}
+      {% if campo.label != 'Empresa' and campo.label != 'Business'%}
+        {% if campo.label == 'Pais de residencia de representante'%}
+        <section class="row mb-3">
+          <section class="col input-group">
+            <label class="input-group-text">{% trans "Pais" %}</label>
+            <select 
+                class="form-select" 
+                aria-label="Default select example"
+                name="{{ field.name }}"
+                placeholder="{{ field.label }}" 
+                value="{{ countries }}"
+            >
+            {% for country in countries %}
+                <option value="{{ country.code }}">{{ country.name }}</option>
+            {% endfor %}
+            </select>
+          </section>
+        </section>
+        {% elif campo.label|slice:"-13:" == "representante" or campo.label|slice:':15' == 'Representatives'%} 
+          <section class="row mb-3">
+            <section class="col input-group">
+              <label class="input-group-text">{{campo.label}}</label>
+              <input
+              type="{{campo.field.widget.input_type}}"
+              class="form-control"
+              name="{{campo.name}}"
+              placeholder="{{campo.label}}"
+              value="{{data.proveedor|get_item:campo.name}}"
+              Required
+            />
+            </section>
+          </section>
+        {% endif %}
+      {% endif %}
     {% endfor %}
   
     <p>{% trans 'Redes sociales' %}</p>
