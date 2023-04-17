@@ -1,9 +1,10 @@
 {% extends "../../base.html" %}
 {% load i18n %}
+{% load countries %}
+{% get_countries as countries %}
 {% block content %}
 <section>
     {% include "../../common/navigation-bar.html" with enlace="http://127.0.0.1:8000/business/" %}
-    <p>{{ list_link }}</p>
     <h2 class="text-center pb-4">
         {% if object == None %}
             {% trans "Crea una empresa" %}
@@ -34,11 +35,18 @@
 
         <section class="row">
             <section class="col input-group">
-                <label for="{{ form.pais.id_for_label }}" class="input-group-text">{{ form.pais.label_tag }}</label>
-                {{ form.pais }}
-                {% for error in form.pais.errors %}
-                    <span class="invalid-feedback">{{ error }}</span>
+                
+                <label class="input-group-text">{% trans "Pais" %}</label>
+                <select 
+                    class="form-select" 
+                    aria-label="Default select example"
+                    value="{{ countries }}"
+                >
+                {% for country in countries %}
+                    <option value="{{ country.code }}">{{ country.name }}</option>
                 {% endfor %}
+                </select>   
+
             </section>
             <section class="col input-group">
                 <label for="{{ form.ciudad.id_for_label }}" class="input-group-text">{{ form.ciudad.label_tag }}</label>
