@@ -28,6 +28,7 @@ class EmpresaABC(DirABC):
     direccion = models.TextField(_("Dirección"))
     web_site = models.URLField(_("Sitio web"))
     servicio_proporciona = models.TextField(_("Servicio que proporciona"))
+    #logo = models.FileField(upload_to='static/logo')
 
     def __str__(self):
         return f"{self.nombre} {self.id_tributaria}"

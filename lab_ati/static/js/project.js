@@ -82,4 +82,8 @@ class SocialMediaController {
       event.currentTarget.remove();
     }
   }
+
+  cargarImagenEmpresa(event){
+    console.log("entre aqui")
+  }
 }

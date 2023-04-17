@@ -4,8 +4,7 @@ FROM python:3.10.5
 
 # Don’t delete the downloaded apt packages
 RUN rm -f /etc/apt/apt.conf.d/docker-clean
-
+#--mount=type=cache,target=/var/cache/apt \
 # Install apt packages, keep a cache
-RUN --mount=type=cache,target=/var/cache/apt \
-  apt-get update && apt-get install -yqq --no-install-recommends \
+RUN apt-get update && apt-get install -yqq --no-install-recommends \
   gettext && rm -rf /var/lib/apt/lists/*
