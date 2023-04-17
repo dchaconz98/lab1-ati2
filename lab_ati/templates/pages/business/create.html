@@ -1,8 +1,8 @@
 {% extends "../../base.html" %}
 {% load i18n %}
+{% block content %}
 {% load countries %}
 {% get_countries as countries %}
-{% block content %}
 <section>
     {% include "../../common/navigation-bar.html" with enlace="http://127.0.0.1:8000/business/" %}
     <h2 class="text-center pb-4">
@@ -36,11 +36,12 @@
         <section class="row">
             <section class="col input-group">
                 
-                <label class="input-group-text">{% trans "Pais" %}</label>
+                <label for="{{ form.pais.id_for_label }}" class="input-group-text">{{ form.pais.label_tag }}</label>
                 <select 
                     class="form-select" 
                     aria-label="Default select example"
-                    value="{{ countries }}"
+                    name="{{ form.pais.name }}"
+                    placeholder="{{ form.pais.label_tag }}"
                 >
                 {% for country in countries %}
                     <option value="{{ country.code }}">{{ country.name }}</option>
