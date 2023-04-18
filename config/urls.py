@@ -1,4 +1,5 @@
 from django.conf import settings
+#from django.conf.urls import url
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
@@ -7,6 +8,7 @@ from django.views import defaults as default_views
 from django.views.generic import TemplateView, RedirectView
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 from rest_framework.authtoken.views import obtain_auth_token
+#from lab_ati.empresa.views import BusinessLogoDetailView;
 
 urlpatterns = [
     path("", RedirectView.as_view(pattern_name="empresa:business-list"), name="home"),
@@ -25,6 +27,7 @@ urlpatterns = [
     # Business urls
     path("business/", include("lab_ati.empresa.urls", namespace="business")),
     # Employee urls
+    #url(r'^$', BusinessLogoDetailView, name="logo-employee"),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 if settings.DEBUG:

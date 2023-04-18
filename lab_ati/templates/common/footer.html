@@ -4,13 +4,14 @@
     <footer class="w-100 px-4 py-2 d-flex justify-content-center align-items-center custom-footer">
         <section class="flex-grow-1 d-flex justify-content-center align-items-center general-container">
             <form method="POST">
-                {{% csrf_token %}}
+                {% csrf_token %}
                 <label for="image-input-footer" class="imagenLoad">
                     <img id="image-preview-footer" src="{% static 'images/logo.png' %%}" width="40" height="40">
                 </label>
                 
                 <input id="image-input-footer" type="file" style="display: none;" accept="image/*">
             </form>
+            <p class="card-text"> {% trans 'Nombre' %}: {{ business_id}} {{ object.nombre }}</p>
             <p class="mx-4 mb-0 h-6">{% trans 'Copyright' %} &#9400 2022 SA - {% trans 'Todos los derechos reservados' %}</p>
         </section>
     </footer>
@@ -23,8 +24,6 @@
     const imageLabel = document.querySelector('label[for="image-input-footer"]');
     const imagePreviewFooter = document.getElementById('image-preview-footer');
     const imagePreviewHeader = document.getElementById('image-preview-header');
-    
-    //const imagePreview = document.querySelectorAll('image-preview');
     const submitButton = document.getElementById('submit-button');
     
     // imageLabel.addEventListener('click', () => {

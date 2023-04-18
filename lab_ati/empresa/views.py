@@ -133,7 +133,6 @@ class EditBusinessView(UpdateView):
         context["business_id"] = self.object.id
         return context
 
-
 class BusinessDetailsView(DetailView):
     template_name = "pages/business/detail.html"
     model = Empresa
@@ -142,6 +141,7 @@ class BusinessDetailsView(DetailView):
         context = super().get_context_data(**kwargs)
         context["business_id"] = self.object.id
         return context
+
 class CreateEmployeeView(CreateView):
     template_name = "pages/employees/create.html"
     model = Empleado
@@ -208,7 +208,6 @@ class CreateEmployeeView(CreateView):
         # Queryset vacio porque vamos a crear un empleado nuevo
         context["socialm_formset"] = SocialMediaFormset(queryset=SocialMedia.objects.none())
         return context
-
 
 class EditEmployeeView(UpdateView):
     template_name = "pages/employees/create.html"
@@ -320,4 +319,16 @@ class DetailEmployeeView(DetailView):
         context["back_link"] = context["list_link"]
         return context
 
+# class BusinessLogoDetailVisw(DetailView):
+#     template_name = "common/footer.html"
+#     model = Empresa
 
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context["business_id"] = self.object.id
+#         return context
+    
+def BusinessLogoDetailView(request, id_empresa):
+    empresa = Empresa.objects.get(pk=id_empresa)
+    context = {'empresa': empresa}
+    return render(request, 'base.html', context)

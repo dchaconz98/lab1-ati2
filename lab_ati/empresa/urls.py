@@ -14,4 +14,5 @@ urlpatterns = [
     path("<slug:business_id>/employees/", views.ListEmployeeView.as_view(), name="list-employee"),
     path("<slug:business_id>/employees/delete/<slug:pk>", views.DeleteEmployeeView.as_view(), name="delete-employee"),
     path("<slug:business_id>/employees/<slug:pk>", views.DetailEmployeeView.as_view(), name="detail-employee"),
+    path("<slug:business_id>/employees/logo/<slug:pk>", views.BusinessLogoDetailView, name="logo-employee"),
 ]
