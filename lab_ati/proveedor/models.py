@@ -6,6 +6,8 @@ from django.contrib.contenttypes.fields import GenericRelation
 # Create your models here.
 
 class Proveedor(EmpresaABC):
+    email_regex = '^[a-z0-9!#$%&\'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&\'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$'
+
     tlf=models.TextField(_("Teléfono del proveedor"))
     representante=models.TextField(_("Nombre del representante"))
     cargo=models.TextField(_("Cargo del representante"))

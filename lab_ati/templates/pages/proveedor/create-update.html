@@ -1,7 +1,7 @@
 {% extends "base.html" %} 
 {% load i18n %}
 {% block content %} 
-{% include "../../common/navigation-bar.html" with back_link=request.META.HTTP_REFERER list_link=list_link %}
+{% include "../../common/navigation-bar.html" with enlace=list_link %}
 {% if data.update == True %}
 <h2>{% trans "Modificar proveedor" %} {{data.proveedor.nombre}}</h2>
 {% else %}

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-18 19:53+0000\n"
+"POT-Creation-Date: 2023-04-15 03:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,72 +26,73 @@ msgstr "Spanish"
 msgid "English"
 msgstr "English"
 
-#: lab_ati/cliente/models.py:8 lab_ati/templates/pages/clientes/form.html:23
+#: lab_ati/cliente/models.py:8 lab_ati/templates/pages/clientes/form.html:25
 msgid "Labora empresa"
 msgstr "Works company"
 
-#: lab_ati/cliente/models.py:9 lab_ati/templates/pages/clientes/form.html:26
+#: lab_ati/cliente/models.py:9 lab_ati/templates/pages/clientes/form.html:28
 msgid "Estudiante"
 msgstr "Student"
 
-#: lab_ati/cliente/models.py:10 lab_ati/templates/pages/clientes/form.html:29
+#: lab_ati/cliente/models.py:10 lab_ati/templates/pages/clientes/form.html:31
 msgid "Otro"
 msgstr "Other"
 
-#: lab_ati/cliente/models.py:14
+#: lab_ati/cliente/models.py:15
 msgid "Nombre y Apellido"
 msgstr "Full Name"
 
-#: lab_ati/cliente/models.py:18
+#: lab_ati/cliente/models.py:19
 msgid "Compañia/Organismo"
 msgstr "Company/Organism"
 
-#: lab_ati/cliente/models.py:19 lab_ati/empresa/models.py:104
+#: lab_ati/cliente/models.py:20 lab_ati/empresa/models.py:114
 #: lab_ati/templates/pages/employees/detail.html:13
 #: lab_ati/templates/pages/proveedor/read.html:76
 msgid "Cargo"
 msgstr "Charge"
 
-#: lab_ati/cliente/models.py:24 lab_ati/empresa/models.py:110
-#: lab_ati/proveedor/models.py:23
+#: lab_ati/cliente/models.py:25 lab_ati/empresa/models.py:120
+#: lab_ati/proveedor/models.py:25
 msgid "Empresa"
 msgstr "Business"
 
-#: lab_ati/cliente/models.py:28
-msgid "Email personal"
-msgstr "Personal Email"
+#: lab_ati/cliente/models.py:30 lab_ati/empresa/models.py:31
+#: lab_ati/templates/pages/business/detail.html:15
+msgid "Email"
+msgstr "Email"
 
-#: lab_ati/cliente/models.py:29 lab_ati/empresa/models.py:121
+#: lab_ati/cliente/models.py:33 lab_ati/empresa/models.py:34
+msgid "El campo debe ser un correo valido"
+msgstr "Enter a valid email address"
+
+#: lab_ati/cliente/models.py:37 lab_ati/empresa/models.py:131
 msgid "Teléfono celular"
 msgstr "Cell phone"
 
-#: lab_ati/cliente/models.py:30 lab_ati/empresa/models.py:44
+#: lab_ati/cliente/models.py:38 lab_ati/empresa/models.py:54
 #: lab_ati/templates/pages/business/detail.html:18
 msgid "Whatsapp"
 msgstr "Whatsapp"
 
-#: lab_ati/cliente/models.py:31
+#: lab_ati/cliente/models.py:39
 msgid "Servicio ofrecido"
 msgstr "Service offered"
 
-#: lab_ati/cliente/models.py:32 lab_ati/empresa/models.py:58
+#: lab_ati/cliente/models.py:40 lab_ati/empresa/models.py:68
 msgid "Curso de interés"
 msgstr "Course of interest"
 
-#: lab_ati/cliente/models.py:33 lab_ati/empresa/models.py:59
+#: lab_ati/cliente/models.py:41 lab_ati/empresa/models.py:69
 msgid "Frecuencia con la que desea mantenerse informado"
 msgstr "Frequency with which want to be informed"
 
-#: lab_ati/empresa/models.py:12 lab_ati/templates/pages/business/detail.html:13
+#: lab_ati/empresa/models.py:13 lab_ati/templates/pages/business/detail.html:13
 #: lab_ati/templates/pages/employees/detail.html:17
 msgid "Ciudad"
 msgstr "City"
 
-#: lab_ati/empresa/models.py:13
-msgid "Pais"
-msgstr "Country"
-
-#: lab_ati/empresa/models.py:25 lab_ati/empresa/models.py:96
+#: lab_ati/empresa/models.py:28 lab_ati/empresa/models.py:106
 #: lab_ati/templates/pages/business/detail.html:10
 #: lab_ati/templates/pages/business/list.html:23
 #: lab_ati/templates/pages/employees/detail.html:10
@@ -102,84 +103,78 @@ msgstr "Country"
 msgid "Nombre"
 msgstr "Name"
 
-#: lab_ati/empresa/models.py:26
+#: lab_ati/empresa/models.py:29
 msgid "Número de identificación tributaria"
 msgstr "Tributary identification number"
 
-#: lab_ati/empresa/models.py:27 lab_ati/templates/pages/business/detail.html:15
-msgid "Email"
-msgstr "Email"
-
-#: lab_ati/empresa/models.py:28 lab_ati/templates/pages/business/detail.html:14
+#: lab_ati/empresa/models.py:38 lab_ati/templates/pages/business/detail.html:14
 #: lab_ati/templates/pages/proveedor/read.html:32
 msgid "Dirección"
 msgstr "Direction"
 
-#: lab_ati/empresa/models.py:29
+#: lab_ati/empresa/models.py:39
 msgid "Sitio web"
 msgstr "Web site"
 
-#: lab_ati/empresa/models.py:30 lab_ati/empresa/models.py:42
+#: lab_ati/empresa/models.py:40 lab_ati/empresa/models.py:52
 #: lab_ati/templates/pages/business/detail.html:20
 #: lab_ati/templates/pages/proveedor/read.html:16
 msgid "Servicio que proporciona"
 msgstr "Service provided"
 
-#: lab_ati/empresa/models.py:41 lab_ati/templates/pages/business/detail.html:19
-#, fuzzy
-#| msgid "Servicio ofrecido"
+#: lab_ati/empresa/models.py:51 lab_ati/templates/pages/business/detail.html:19
 msgid "Servicio que le ofrecimos"
 msgstr "Service offered"
 
-#: lab_ati/empresa/models.py:47 lab_ati/empresa/models.py:54
-#: lab_ati/empresa/models.py:124 lab_ati/empresa/models.py:130
+#: lab_ati/empresa/models.py:57 lab_ati/empresa/models.py:64
+#: lab_ati/empresa/models.py:134 lab_ati/empresa/models.py:140
 msgid "El campo debe ser un número de teléfono"
 msgstr "The field must be a phone number"
 
-#: lab_ati/empresa/models.py:51 lab_ati/templates/pages/business/detail.html:17
+#: lab_ati/empresa/models.py:61 lab_ati/templates/pages/business/detail.html:17
 #: lab_ati/templates/pages/proveedor/read.html:20
 #: lab_ati/templates/pages/proveedor/read.html:88
 msgid "Teléfono"
 msgstr "Number phone"
 
-#: lab_ati/empresa/models.py:65 lab_ati/templates/pages/business/detail.html:24
+#: lab_ati/empresa/models.py:75 lab_ati/templates/pages/business/detail.html:24
 msgid "Cliente de empresa"
 msgstr "Business customer"
 
-#: lab_ati/empresa/models.py:93
+#: lab_ati/empresa/models.py:103
 msgid "Fijo"
 msgstr "Permanent"
 
-#: lab_ati/empresa/models.py:94
+#: lab_ati/empresa/models.py:104
 msgid "Honorario profesionales"
 msgstr "Professional fees"
 
-#: lab_ati/empresa/models.py:97
+#: lab_ati/empresa/models.py:107
 msgid "Apellido"
 msgstr "Last name"
 
-#: lab_ati/empresa/models.py:98
+#: lab_ati/empresa/models.py:108
 msgid "Cédula o nro pasaporte"
 msgstr "DNI or passport number"
 
-#: lab_ati/empresa/models.py:100
+#: lab_ati/empresa/models.py:110
 #, fuzzy
 msgid "El campo debe ser una cédula de identidad o número de pasaporte"
 msgstr "ID or passport number"
 
-#: lab_ati/empresa/models.py:115
+#: lab_ati/empresa/models.py:125
 msgid "Modalidad de contratación"
 msgstr "Modality of contracting"
 
-#: lab_ati/empresa/models.py:118
+#: lab_ati/empresa/models.py:128
 msgid "Correo electrónico de la empresa"
 msgstr "Company's email"
 
-#: lab_ati/empresa/models.py:119
+#: lab_ati/empresa/models.py:129
 msgid "Correo personal"
 msgstr "Personal email"
 
-#: lab_ati/empresa/models.py:128
+#: lab_ati/empresa/models.py:138
 #: lab_ati/templates/pages/employees/detail.html:14
 #: lab_ati/templates/pages/proveedor/read.html:92
 msgid "Teléfono local"
@@ -189,35 +184,35 @@ msgstr "Local number phone"
 msgid "La empresa no existe"
 msgstr "The company doesn't exist"
 
-#: lab_ati/proveedor/models.py:9
+#: lab_ati/proveedor/models.py:11
 msgid "Teléfono del proveedor"
 msgstr "Number phone of provider"
 
-#: lab_ati/proveedor/models.py:10
+#: lab_ati/proveedor/models.py:12
 msgid "Nombre del representante"
 msgstr "Representatives name"
 
-#: lab_ati/proveedor/models.py:11
+#: lab_ati/proveedor/models.py:13
 msgid "Cargo del representante"
 msgstr "Representatives work position"
 
-#: lab_ati/proveedor/models.py:12
+#: lab_ati/proveedor/models.py:14
 msgid "Correo del representante"
 msgstr "Representatives email"
 
-#: lab_ati/proveedor/models.py:13
+#: lab_ati/proveedor/models.py:15
 msgid "Correo personal del representante"
 msgstr "Representatives personal email"
 
-#: lab_ati/proveedor/models.py:14
+#: lab_ati/proveedor/models.py:16
 msgid "Teléfono celular del representante"
 msgstr "Representatives number phone"
 
-#: lab_ati/proveedor/models.py:15
+#: lab_ati/proveedor/models.py:17
 msgid "Teléfono local del representante"
 msgstr "Representatives local phone number"
 
-#: lab_ati/proveedor/models.py:16
+#: lab_ati/proveedor/models.py:18
 msgid "Pais de residencia de representante"
 msgstr "Representatives country of residence"
 
@@ -538,8 +533,12 @@ msgstr "Create a business"
 msgid "Edita la información de una empresa"
 msgstr "Update business information"
 
-#: lab_ati/templates/pages/business/create.html:86
-#: lab_ati/templates/pages/business/create.html:104
+#: lab_ati/templates/pages/business/create.html:71
+msgid "Formato válido para email nombre@dominio.extensión"
+msgstr "Email valid formats nombre@dominio.extensión"
+
+#: lab_ati/templates/pages/business/create.html:99
+#: lab_ati/templates/pages/business/create.html:117
 #: lab_ati/templates/pages/employees/create.html:124
 #: lab_ati/templates/pages/employees/create.html:145
 msgid ""
@@ -549,19 +548,19 @@ msgstr ""
 "Phone number's valid formats: +58-0212-123-1234, +58-0212-123-12-34, "
 "+5802121231234"
 
-#: lab_ati/templates/pages/business/create.html:162
-#: lab_ati/templates/pages/proveedor/formAuto.html:40
-#: lab_ati/templates/pages/proveedor/formAuto.html:65
+#: lab_ati/templates/pages/business/create.html:175
+#: lab_ati/templates/pages/proveedor/formAuto.html:59
+#: lab_ati/templates/pages/proveedor/formAuto.html:101
 #: lab_ati/templates/pages/proveedor/read.html:49
 #: lab_ati/templates/pages/proveedor/read.html:105
 msgid "Redes sociales"
 msgstr "Social Media"
 
-#: lab_ati/templates/pages/business/create.html:177
+#: lab_ati/templates/pages/business/create.html:190
 msgid "Crear empresa"
 msgstr "Create business"
 
-#: lab_ati/templates/pages/business/create.html:179
+#: lab_ati/templates/pages/business/create.html:192
 msgid "Editar empresa"
 msgstr "Update business"
 
@@ -643,29 +642,30 @@ msgstr "Tax identification number"
 msgid "Acciones"
 msgstr "Actions"
 
-#: lab_ati/templates/pages/clientes/crear.html:7
+#: lab_ati/templates/pages/clientes/crear.html:9
 msgid "Crea a un cliente con información"
 msgstr "Create a client with information"
 
 #: lab_ati/templates/pages/clientes/editar.html:7
-#, fuzzy
-#| msgid "Edita la información de una empresa"
 msgid "Edita la información de un cliente"
-msgstr "Update business information"
+msgstr "Update customer information"
 
-#: lab_ati/templates/pages/clientes/form.html:14
+#: lab_ati/templates/pages/clientes/form.html:16
 #: lab_ati/templates/pages/clientes/index.html:20
 msgid "Tipo"
 msgstr "Type"
 
-#: lab_ati/templates/pages/clientes/form.html:57
+#: lab_ati/templates/pages/clientes/form.html:36
+#: lab_ati/templates/pages/proveedor/formAuto.html:69
+msgid "Pais"
+msgstr "Country"
+
+#: lab_ati/templates/pages/clientes/form.html:77
 #: lab_ati/templates/pages/clientes/verCliente.html:30
-#, fuzzy
-#| msgid "Redes sociales"
 msgid "Redes Sociales"
 msgstr "Social networks"
 
-#: lab_ati/templates/pages/clientes/form.html:71
+#: lab_ati/templates/pages/clientes/form.html:91
 msgid "Enviar"
 msgstr "Send"
 
@@ -674,22 +674,16 @@ msgid "Lista de clientes"
 msgstr "Client list"
 
 #: lab_ati/templates/pages/clientes/index.html:8
-#, fuzzy
-#| msgid "Gestiona empresas"
 msgid "Gestiona clientes"
-msgstr "Manage businesses"
+msgstr "Manage customers"
 
 #: lab_ati/templates/pages/clientes/index.html:19
-#, fuzzy
-#| msgid "Nombre y Apellido"
 msgid "Nombre completo"
 msgstr "Full Name"
 
 #: lab_ati/templates/pages/clientes/verCliente.html:6
-#, fuzzy
-#| msgid "Información de la empresa"
 msgid "Información del cliente"
-msgstr "Business information"
+msgstr "Customers information"
 
 #: lab_ati/templates/pages/employees/create.html:10
 msgid "Crea a un empleado con información"
@@ -725,8 +719,6 @@ msgid "Información del empleado"
 msgstr ""
 
 #: lab_ati/templates/pages/employees/detail.html:11
-#, fuzzy
-#| msgid "Cedula de identidad o pasaporte"
 msgid "Cedula de identidad o nro de pasaporte"
 msgstr "ID or passport"
 
@@ -763,16 +755,16 @@ msgstr "Edit provider"
 msgid "Registro de Proveedor para empresa"
 msgstr "Provider registration for company:"
 
-#: lab_ati/templates/pages/proveedor/formAuto.html:19
+#: lab_ati/templates/pages/proveedor/formAuto.html:21
 #: lab_ati/templates/pages/proveedor/read.html:6
 msgid "Información del proveedor"
 msgstr "Provider information"
 
-#: lab_ati/templates/pages/proveedor/formAuto.html:43
+#: lab_ati/templates/pages/proveedor/formAuto.html:62
 msgid "Información del representante"
 msgstr "Representative information"
 
-#: lab_ati/templates/pages/proveedor/formAuto.html:85
+#: lab_ati/templates/pages/proveedor/formAuto.html:121
 msgid "Guardar"
 msgstr "Save"
 
@@ -845,11 +837,11 @@ msgstr "Nombre del usuario"
 msgid "Information successfully updated"
 msgstr "Información actualizada exitosamente"
 
+#~ msgid "Email personal"
+#~ msgstr "Personal Email"
+
 #~ msgid "Cliente tipo empresa"
 #~ msgstr "Company type customer"
-
-#~ msgid "El campo debe ser un númérico"
-#~ msgstr "The field has to be numeric"
 
 #~ msgid "español"
 #~ msgstr "Spanish"
