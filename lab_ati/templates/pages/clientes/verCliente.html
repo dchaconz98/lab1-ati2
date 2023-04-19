@@ -2,7 +2,7 @@
 {% load i18n %}
 {% block content %}
     <div class="container">
-        {% include "../../common/navigation-bar.html" %}
+        {% include "../../common/navigation-bar.html" with enlace=list_link %}
         <h2 class="text-center pb-4">{% trans "Información del cliente" %}</h2>
         <a class="btn btn-primary" href="{% url 'clients' business_id=business_id %}">Volver</a>
         {% csrf_token %}
@@ -13,7 +13,7 @@
                 {% else %}
                 <div class="col-6">
                 {% endif %}
-                    <label class="form-label">{{ field.label }}:</label>
+                    <label class="form-label">{% trans field.label %}:</label>
                     <input 
                         type="{{ field.field.widget.input_type }}"
                         class="form-control" 

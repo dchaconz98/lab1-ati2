@@ -1,7 +1,7 @@
 from django.db import models
 from lab_ati.empresa.models import DirABC
 from django.utils.translation import gettext_lazy as _
-
+from django.core import validators
 # Create your models here.
 
 class ClientType(models.TextChoices):
@@ -10,9 +10,11 @@ class ClientType(models.TextChoices):
     OTHER = 'JR', _('Otro')
 
 class Cliente(DirABC):
+    email_regex = '^[a-z0-9!#$%&\'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&\'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$'
+    tlf_regex = '^\+?([0-9]{1,3}|[1]\-?[0-9]{3})?\-?([0-9]{1,4})\-?([0-9]{3}\-?[0-9]{2}\-?[0-9]{2})$'
 
     nombre = models.TextField(_("Nombre y Apellido"))
-    tipo = models.TextField(
+    tipo = models.TextField(_("Tipo"),
         choices=ClientType.choices,
     )
     empcompany=models.TextField(_("Compañia/Organismo"))
@@ -25,9 +27,30 @@ class Cliente(DirABC):
         null=True,
         blank=True,
     )
-    personal_email=models.TextField(_("Email personal"))
-    tlf_celular=models.TextField(_("Teléfono celular"))
-    whatsapp=models.TextField(_("Whatsapp"))
+    personal_email=models.EmailField(
+        _("Email"),
+        validators=[validators.RegexValidator(
+            regex=email_regex,
+            message=_('El campo debe ser un correo valido'),
+            code='correo_invalido'
+        )]                      
+    )
+    tlf_celular=models.TextField(
+        _("Teléfono celular"),
+        validators=[validators.RegexValidator(
+            regex=tlf_regex,
+            message=_('El campo debe ser un número de teléfono'),
+            code='tlf_invalido'
+        )]        
+        )
+    whatsapp=models.TextField(
+        _("Whatsapp"),
+        validators=[validators.RegexValidator(
+            regex=tlf_regex,
+            message=_('El campo debe ser un número de teléfono'),
+            code='tlf_whatsapp_invalido'
+        )]
+    )
     servicio_ofrecido = models.TextField(_("Servicio ofrecido"))
     curso_interes=models.TextField(_("Curso de interés"))
     frecuencia=models.TextField(_("Frecuencia con la que desea mantenerse informado"))

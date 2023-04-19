@@ -1,9 +1,10 @@
 {% extends "../../base.html" %}
 {% load i18n %}
-
 {% block content %}
+{% load countries %}
+{% get_countries as countries %}
 <section>
-    {% include "../../common/navigation-bar.html" %}
+    {% include "../../common/navigation-bar.html" with enlace="http://127.0.0.1:8000/business/" %}
     <h2 class="text-center pb-4">
         {% if object == None %}
             {% trans "Crea una empresa" %}
@@ -11,6 +12,8 @@
             {% trans "Edita la información de una empresa" %}
         {% endif %}
     </h2>
+
+    </select>
     <form method="POST" class="container d-grid gap-3 pb-4">
         {% csrf_token %}
         <section class="row">
@@ -32,11 +35,19 @@
 
         <section class="row">
             <section class="col input-group">
+                
                 <label for="{{ form.pais.id_for_label }}" class="input-group-text">{{ form.pais.label_tag }}</label>
-                {{ form.pais }}
-                {% for error in form.pais.errors %}
-                    <span class="invalid-feedback">{{ error }}</span>
+                <select 
+                    class="form-select" 
+                    aria-label="Default select example"
+                    name="{{ form.pais.name }}"
+                    placeholder="{{ form.pais.label_tag }}"
+                >
+                {% for country in countries %}
+                    <option value="{{ country.code }}">{{ country.name }}</option>
                 {% endfor %}
+                </select>   
+
             </section>
             <section class="col input-group">
                 <label for="{{ form.ciudad.id_for_label }}" class="input-group-text">{{ form.ciudad.label_tag }}</label>

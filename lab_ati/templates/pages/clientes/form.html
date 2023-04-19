@@ -1,4 +1,6 @@
 {% load i18n %}
+{% load countries %}
+{% get_countries as countries %}
 <form enctype="multipart/form-data" method="post"  class="container d-grid gap-3 pb-4">
     {% csrf_token %}
     <div class="row">
@@ -29,6 +31,20 @@
                                 <h5>{% trans "Otro" %}</h5>
                             </option>
                         </select>
+
+                    {% elif field.name == 'pais' %}
+                        <label class="input-group-text">{% trans "Pais" %}</label>
+                        <select 
+                            class="form-select" 
+                            aria-label="Default select example"
+                            name="{{ field.name }}"
+                            placeholder="{{ field.label }}" 
+                            value="{{ countries }}"
+                        >
+                        {% for country in countries %}
+                            <option value="{{ country.code }}">{{ country.name }}</option>
+                        {% endfor %}
+                        </select>                    
                     {% else %}
                         <label class="input-group-text">{{ field.label }}</label>
                         <input 
@@ -45,10 +61,19 @@
                             Required
                         >
                     {% endif %}
-                    <span class="text-danger text-xs mx-2">
-                        {{ field.errors }}
-                    </span>
                 </div>
+                {% if field.name == 'tlf_celular' or field.name == 'whatsapp' %}
+                    <span class="text-info text-xs">
+                        <i class="bi bi-info-circle"></i>
+                        {% trans 'Formatos válidos de número de teléfono: +58-0212-123-1234, +58-0212-123-12-34, +5802121231234' %}
+                    </span>
+                {% endif %}
+                {% for error in field.errors %}
+                <p class="text-danger text-xs">
+                    <i class="bi bi-exclamation-octagon"></i>
+                    {{ error }}
+                </p>
+                {% endfor %}
             </div>
         {% endfor %}
     </div>
