@@ -20,7 +20,10 @@
                         name="{{ field.name }}"
                         aria-describedby="helpId" 
                         placeholder="{{ field.label }}"
-                        value="{{ field.value | default:'' }}"
+                        value="{{ field.value | default:'No tiene' }}"
+                        {% if field.value == '' %}
+                            style="border-bottom: 1px solid red; color: red;"
+                        {% endif %}
                         disabled
                     > 
                 </div>

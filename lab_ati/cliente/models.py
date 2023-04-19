@@ -41,7 +41,9 @@ class Cliente(DirABC):
             regex=tlf_regex,
             message=_('El campo debe ser un número de teléfono'),
             code='tlf_invalido'
-        )]        
+        )],
+        null=True,
+        blank=True        
         )
     whatsapp=models.TextField(
         _("Whatsapp"),
@@ -49,7 +51,9 @@ class Cliente(DirABC):
             regex=tlf_regex,
             message=_('El campo debe ser un número de teléfono'),
             code='tlf_whatsapp_invalido'
-        )]
+        )],
+        null=True,
+        blank=True
     )
     servicio_ofrecido = models.TextField(_("Servicio ofrecido"))
     curso_interes=models.TextField(_("Curso de interés"))
