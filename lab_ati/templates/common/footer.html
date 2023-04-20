@@ -3,15 +3,22 @@
 {% block footer %}
     <footer class="w-100 px-4 py-2 d-flex justify-content-center align-items-center custom-footer">
         <section class="flex-grow-1 d-flex justify-content-center align-items-center general-container">
-            <form method="POST">
+          {% if business_id %}
+          <form method="POST" enctype="multipart/form-data" action="{% url 'empresa:update-logo-employee' business_id %}">
                 {% csrf_token %}
+                <p>{{context}}</p>
                 <label for="image-input-footer" class="imagenLoad">
-                    <img id="image-preview-footer" src="{% static 'images/logo.png' %%}" width="40" height="40">
+                    <img id="image-preview-footer" src="images/logos/ejecutarApicdeployYaml.png" width="40" height="40">
                 </label>
-                
-                <input id="image-input-footer" type="file" style="display: none;" accept="image/*">
-            </form>
-            <p class="card-text"> {% trans 'Nombre' %}: {{ business_id}} {{ object.nombre }}</p>
+                <input  name="logo_business_pk" id="image-input-footer" type="file" style="display: none;" accept="image/*">
+                <input id="actualizar-logo" type="submit" style="display: none;"/>
+              </form>
+          {% else %}
+            <label for="" class="imagenLoad">
+                <img id="" src="{% static 'images/logo.png' %%}" width="40" height="40">
+            </label>
+          {% endif %}
+            <p class="card-text"> {% trans 'Nombre' %}: {{contextLogo}}</p>
             <p class="mx-4 mb-0 h-6">{% trans 'Copyright' %} &#9400 2022 SA - {% trans 'Todos los derechos reservados' %}</p>
         </section>
     </footer>
@@ -24,7 +31,7 @@
     const imageLabel = document.querySelector('label[for="image-input-footer"]');
     const imagePreviewFooter = document.getElementById('image-preview-footer');
     const imagePreviewHeader = document.getElementById('image-preview-header');
-    const submitButton = document.getElementById('submit-button');
+    const submitButton = document.getElementById('actualizar-logo');
     
     // imageLabel.addEventListener('click', () => {
     //     console.log("entre aqui");
@@ -47,6 +54,7 @@
       }
       
       reader.readAsDataURL(file);
+      submitButton.click()
     });
     
     // submitButton.addEventListener('click', () => {
@@ -64,6 +72,7 @@
     //   })
     //   .catch(error => console.error(error));
     // });
+
   </script>
       
 {% endblock %}

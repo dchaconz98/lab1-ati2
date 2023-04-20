@@ -192,6 +192,7 @@ TEMPLATES = [
                 "django.template.context_processors.tz",
                 "django.contrib.messages.context_processors.messages",
                 "lab_ati.users.context_processors.allauth_settings",
+                "lab_ati.empresa.context_logo.empresa_logo",
             ],
         },
     }

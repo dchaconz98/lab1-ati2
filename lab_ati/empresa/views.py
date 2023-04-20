@@ -1,6 +1,6 @@
 from django.http.response import Http404
 from django.urls.base import reverse_lazy
-
+from django.http import HttpResponseRedirect
 from django.views.generic import UpdateView, CreateView, ListView, DeleteView, DetailView, TemplateView
 from .forms import CreateBusinessForm, CreateEmployeeForm, SocialMediaFormset
 from lab_ati.empresa.models import Empleado, Empresa, SocialMedia
@@ -10,6 +10,7 @@ from django.core import exceptions
 from django.shortcuts import render
 from lab_ati.utils.social_media import add_social_media
 from django.urls import reverse
+from django.core.files.storage import FileSystemStorage
 
 # Create your views here.
 class BusinessListView(ListView):
@@ -319,16 +320,42 @@ class DetailEmployeeView(DetailView):
         context["back_link"] = context["list_link"]
         return context
 
-# class BusinessLogoDetailVisw(DetailView):
-#     template_name = "common/footer.html"
-#     model = Empresa
 
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context["business_id"] = self.object.id
-#         return context
+
+class BusinessLogoDetailVisw(DetailView):
+    template_name = "base.html"
+    model = Empresa
+
+    def get_context_data(self, **kwargs):
+      
+        context = super().get_context_data(**kwargs)
+
+        context["business_id"] = self.kwargs['business_id']
+        return context
     
-def BusinessLogoDetailView(request, id_empresa):
+def actualizar_logo_empresa(request, business_id):
+
+    empresa =Empresa.objects.get(pk=business_id) # get_object_or_404(Empresa, id=business_id)
+
+    if request.method == 'POST':
+        imagen = request.FILES['logo_business_pk']
+        if imagen:
+            #fs = FileSystemStorage()
+            #filename = fs.save(imagen.name, imagen)
+            #uploaded_file_url = fs.url(filename)
+            #print(uploaded_file_url)
+            empresa.logo = imagen
+            empresa.save(update_fields=['logo'])
+            #return redirect('detalle_empresa', empresa_id=empresa_id)
+        #else:
+            #return HttpResponseBadRequest("No se ha enviado ninguna imagen")
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))    
+
+
+    #return render(request, 'base.html', {'empresa': empresa})
+def BusinessLogoDetailView(request, id):
     empresa = Empresa.objects.get(pk=id_empresa)
-    context = {'empresa': empresa}
-    return render(request, 'base.html', context)
+
+    context ={ empresa:empresa} 
+    
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))    

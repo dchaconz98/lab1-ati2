@@ -4,9 +4,9 @@
     <header class="w-100 d-flex justify-content-center custom-header position-fixed top-0 z-40">
         <section class="flex-grow-1 w-100 px-4 py-2 d-flex justify-content-center align-items-center general-container">
             <section class="flex-grow-1">
-                {% if business_id != None %}
+                {% if business_id %}
                     <label for="image-input-header" class="imagenLoad">
-                        <img id="image-preview-header" src="{% static 'images/logos/descarga.jpeg' %%}" width="40" height="40">
+                        <img id="image-preview-header" src="images/logos/Imagen1.png" width="40" height="40">
                     </label>
                 {% else %}
                     <label for="image-input-header" class="imagenLoad">
@@ -15,7 +15,7 @@
                 {% endif %}
 
                 
-                <input id="image-input-header" type="file" style="display: none;" accept="image/*">
+                <input name="logo_business_pk" id="image-input-header" type="file" style="display: none;" accept="image/*">
             </section>
             
             
