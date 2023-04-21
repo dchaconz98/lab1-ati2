@@ -3,8 +3,10 @@
 {% get_current_language as LANGUAGE_CODE %}
 
 {% block content %}
+{% load countries %}
+{% get_countries as countries %}
 <section class="general-container w-100">
-    {% include "../../common/navigation-bar.html" %}
+    {% include "../../common/navigation-bar.html" with enlace=list_link %}
     <h2 class="text-center pb-4">
         {% if object == None %}
             {% trans "Crea a un empleado con información" %}
@@ -170,7 +172,16 @@
             <section class="col">    
                 <section class="input-group">
                     <label class="input-group-text">{{ form.pais.label_tag }}</label>
-                    {{ form.pais }}
+                    <select 
+                    class="form-select" 
+                    aria-label="Default select example"
+                    name="{{ form.pais.name }}"
+                    placeholder="{{ form.pais.label_tag }}"
+                    >
+                    {% for country in countries %}
+                        <option value="{{ country.code }}">{{ country.name }}</option>
+                    {% endfor %}
+                    </select>   
                 </section>   
                 {% for error in form.pais.errors %}
                     <span class="text-danger text-xs">

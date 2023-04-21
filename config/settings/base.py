@@ -30,6 +30,8 @@ LANGUAGE_CODE = "es-ES"
 LANGUAGES = [
     ('es', _('Spanish')),
     ('en', _('English')),
+    ('fr', _('Français')),
+    ('de', _('Deutsch'))
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#site-id
 SITE_ID = 1
@@ -69,6 +71,7 @@ DJANGO_APPS = [
     # "django.contrib.humanize", # Handy template tags
     "django.contrib.admin",
     "django.forms",
+    "django_countries",
 ]
 THIRD_PARTY_APPS = [
     "crispy_forms",

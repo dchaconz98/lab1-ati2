@@ -3,7 +3,7 @@
 
 {% block content %}
 <section class="general-container w-100 h-100">
-    {% include "../../common/navigation-bar.html" with back_link=request.META.HTTP_REFERER list_link="" %}
+    {% include "../../common/navigation-bar.html" with back_link=request.META.HTTP_REFERER enlace=list_link %}
     <section class="w-100 d-flex flex-column justify-content-center align-items-center">
         <section class="rounded p-4 bg-white mt-4">
             <h2 class="text-center pb-4">{% trans "Borrar empleado" %}</h2>

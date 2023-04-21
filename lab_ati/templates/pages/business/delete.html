@@ -3,7 +3,7 @@
 
 {% block content %}
 <section class="general-container w-100 h-100">
-    {% include "../../common/navigation-bar.html" %}
+    {% include "../../common/navigation-bar.html" with enlace="http://127.0.0.1:8000/business/" %}
     <section class="w-100 d-flex flex-column justify-content-center align-items-center">
         <section class="rounded p-4 bg-white mt-4">
             <h2 class="text-center pb-4">{% trans "Borrar empresa" %}</h2>
