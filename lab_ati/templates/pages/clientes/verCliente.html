@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% block content %}
+{% trans "No tiene" as default_value %}
     <div class="container">
         {% include "../../common/navigation-bar.html" with enlace=list_link %}
         <h2 class="text-center pb-4">{% trans "Información del cliente" %}</h2>
@@ -20,7 +21,7 @@
                         name="{{ field.name }}"
                         aria-describedby="helpId" 
                         placeholder="{{ field.label }}"
-                        value="{{ field.value | default:'No tiene' }}"
+                        value="{{ field.value | default:default_value }}"
                         {% if field.value == '' %}
                             style="border-bottom: 1px solid red; color: red;"
                         {% endif %}

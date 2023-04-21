@@ -854,3 +854,6 @@ msgstr "Información actualizada exitosamente"
 
 #~ msgid "Mi perfil"
 #~ msgstr "My Profile"
+
+msgid "No tiene"
+msgstr "Doesn't have"
