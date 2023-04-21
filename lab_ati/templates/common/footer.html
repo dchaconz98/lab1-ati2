@@ -7,15 +7,18 @@
               <form method="POST" enctype="multipart/form-data" action="{% url 'empresa:update-logo-employee' request.empresa_global.id %}">
                 {% csrf_token %}
                 <label for="image-input-footer" class="imagenLoad">
+                  {% if request.empresa_global.logo == "logo.png" %}
+                    <img id="image-preview-footer" src="{% static 'images/logo.png' %%}" width="40" height="40">
+                    {% else %}  
                     <img id="image-preview-footer" src=/media/{{request.empresa_global.logo}} width="40" height="40">
-                </label>
+                    {% endif %}
+                  </label>
                 <input name="logo_business_pk" id="image-input-footer" type="file" style="display: none;" accept="image/*">
                 <input id="actualizar-logo-footer" type="submit" style="display: none;"/>
               </form>
               {% else %}
-              <label for="" class="imagenLoad">
-                <img id="" src="{% static 'images/logo.png' %%}" width="40" height="40">
-              </label>
+                  <img id="" src="{% static 'images/logo.png' %%}" width="40" height="40">
+             
               {% endif %}
     
             <p class="mx-4 mb-0 h-6">{% trans 'Copyright' %} &#9400 2022 SA - {% trans 'Todos los derechos reservados' %}</p>

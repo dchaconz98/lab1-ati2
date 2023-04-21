@@ -18,6 +18,14 @@ class EmpresaGlobalMiddleware:
         print(request.POST)
         print("******************", request.path)
         
+        if request.path == '/':
+            
+            request.empresa_global = empresa
+        
+            response = self.get_response(request)
+            
+            return response
+
         idPk =request.path.split('/')
         
         print("====>" , idPk)

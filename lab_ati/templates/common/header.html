@@ -8,7 +8,11 @@
                 <form method="POST" enctype="multipart/form-data" action="{% url 'empresa:update-logo-employee' request.empresa_global.id %}">
                         {% csrf_token %}
                         <label for="image-input-header" class="imagenLoad">
-                            <img id="image-preview-header" src=/media/{{request.empresa_global.logo}} width="40" height="40">
+                            {% if request.empresa_global.logo == "logo.png" %}
+                                <img id="image-preview-header" src="{% static 'images/logo.png' %%}" width="40" height="40">
+                            {% else %}  
+                                <img id="image-preview-header" src=/media/{{request.empresa_global.logo}} width="40" height="40">
+                            {% endif %}
                         </label>
                         <input  name="logo_business_pk" id="image-input-header" type="file" style="display: none;" accept="image/*">
                         <input id="actualizar-logo-header" type="submit" style="display: none;"/>
