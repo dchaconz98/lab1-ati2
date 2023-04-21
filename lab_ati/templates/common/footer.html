@@ -3,12 +3,11 @@
 {% block footer %}
     <footer class="w-100 px-4 py-2 d-flex justify-content-center align-items-center custom-footer">
         <section class="flex-grow-1 d-flex justify-content-center align-items-center general-container">
-          {% if business_id %}
-          <form method="POST" enctype="multipart/form-data" action="{% url 'empresa:update-logo-employee' business_id %}">
+          {% if request.empresa_global.id %}
+          <form method="POST" enctype="multipart/form-data" action="{% url 'empresa:update-logo-employee' request.empresa_global.id %}">
                 {% csrf_token %}
-                <p>{{context}}</p>
                 <label for="image-input-footer" class="imagenLoad">
-                    <img id="image-preview-footer" src="images/logos/ejecutarApicdeployYaml.png" width="40" height="40">
+                    <img id="image-preview-footer" src=/media/{{request.empresa_global.logo}} width="40" height="40">
                 </label>
                 <input  name="logo_business_pk" id="image-input-footer" type="file" style="display: none;" accept="image/*">
                 <input id="actualizar-logo" type="submit" style="display: none;"/>
@@ -18,7 +17,7 @@
                 <img id="" src="{% static 'images/logo.png' %%}" width="40" height="40">
             </label>
           {% endif %}
-            <p class="card-text"> {% trans 'Nombre' %}: {{contextLogo}}</p>
+            <!-- <p class="card-text"> {% trans 'Nombre' %}</p> -->
             <p class="mx-4 mb-0 h-6">{% trans 'Copyright' %} &#9400 2022 SA - {% trans 'Todos los derechos reservados' %}</p>
         </section>
     </footer>
@@ -33,11 +32,6 @@
     const imagePreviewHeader = document.getElementById('image-preview-header');
     const submitButton = document.getElementById('actualizar-logo');
     
-    // imageLabel.addEventListener('click', () => {
-    //     console.log("entre aqui");
-    //     //imageInput.click();
-    // });
-    
     imageInput.addEventListener('change', () => {
       const file = imageInput.files[0];
       const reader = new FileReader();
@@ -45,33 +39,12 @@
       reader.onload = (e) => {
         imagePreviewFooter.src=e.target.result;
         imagePreviewHeader.src=e.target.result;
-
-        // imagePreview.forEach(elemento => {
-        
-        //     elemento.src = e.target.result;
-        
-        // });
       }
       
       reader.readAsDataURL(file);
       submitButton.click()
     });
     
-    // submitButton.addEventListener('click', () => {
-    //   const file = imageInput.files[0];
-    //   const formData = new FormData();
-    //   formData.append('image', file);
-      
-    //   fetch('/url-del-controlador/', {
-    //     method: 'POST',
-    //     body: formData
-    //   })
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     // hacer algo con la respuesta del servidor
-    //   })
-    //   .catch(error => console.error(error));
-    // });
 
   </script>
       

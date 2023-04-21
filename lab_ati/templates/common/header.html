@@ -4,16 +4,20 @@
     <header class="w-100 d-flex justify-content-center custom-header position-fixed top-0 z-40">
         <section class="flex-grow-1 w-100 px-4 py-2 d-flex justify-content-center align-items-center general-container">
             <section class="flex-grow-1">
-                {% if business_id %}
-                    <label for="image-input-header" class="imagenLoad">
-                        <img id="image-preview-header" src="images/logos/Imagen1.png" width="40" height="40">
-                    </label>
+                {% if request.empresa_global.id %}
+                <form method="POST" enctype="multipart/form-data" action="{% url 'empresa:update-logo-employee' request.empresa_global.id %}">
+                        {% csrf_token %}
+                        <label for="image-input-header" class="imagenLoad">
+                            <img id="image-preview-header" src=/media/{{request.empresa_global.logo}} width="40" height="40">
+                        </label>
+                        <input  name="logo_business_pk" id="image-input-header" type="file" style="display: none;" accept="image/*">
+                        <input id="actualizar-logo" type="submit" style="display: none;"/>
+                    </form>
                 {% else %}
-                    <label for="image-input-header" class="imagenLoad">
-                        <img id="image-preview-header" src="{% static 'images/logo.png' %%}" width="40" height="40">
+                    <label for="" class="imagenLoad">
+                        <img id="" src="{% static 'images/logo.png' %%}" width="40" height="40">
                     </label>
                 {% endif %}
-
                 
                 <input name="logo_business_pk" id="image-input-header" type="file" style="display: none;" accept="image/*">
             </section>
@@ -53,4 +57,30 @@
             </ul>
         </section>
     </header>
+{% endblock %}
+
+{% block inline_javascript %}
+<script>
+    const imageInput = document.getElementById('image-input-footer');
+    const imageLabel = document.querySelector('label[for="image-input-footer"]');
+    const imagePreviewFooter = document.getElementById('image-preview-footer');
+    const imagePreviewHeader = document.getElementById('image-preview-header');
+    const submitButton = document.getElementById('actualizar-logo');
+    
+    imageInput.addEventListener('change', () => {
+      const file = imageInput.files[0];
+      const reader = new FileReader();
+      
+      reader.onload = (e) => {
+        imagePreviewFooter.src=e.target.result;
+        imagePreviewHeader.src=e.target.result;
+      }
+      
+      reader.readAsDataURL(file);
+      submitButton.click()
+    });
+    
+
+  </script>
+      
 {% endblock %}

@@ -146,6 +146,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.common.BrokenLinkEmailsMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "lab_ati.empresa.context_logo.EmpresaGlobalMiddleware",
 ]
 
 # STATIC
@@ -192,7 +193,6 @@ TEMPLATES = [
                 "django.template.context_processors.tz",
                 "django.contrib.messages.context_processors.messages",
                 "lab_ati.users.context_processors.allauth_settings",
-                "lab_ati.empresa.context_logo.empresa_logo",
             ],
         },
     }

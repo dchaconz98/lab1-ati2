@@ -14,7 +14,6 @@ urlpatterns = [
     path("<slug:business_id>/employees/", views.ListEmployeeView.as_view(), name="list-employee"),
     path("<slug:business_id>/employees/delete/<slug:pk>", views.DeleteEmployeeView.as_view(), name="delete-employee"),
     path("<slug:business_id>/employees/<slug:pk>", views.DetailEmployeeView.as_view(), name="detail-employee"),
-    path("r'^$'/<slug:business_id>", views.BusinessLogoDetailVisw.as_view(), name="logo-employee"),
     path("guardar-logo/<slug:business_id>", views.actualizar_logo_empresa, name="update-logo-employee"),
    
    # path("r'^$'", views.BusinessLogoDetailView, name="logo-employee");

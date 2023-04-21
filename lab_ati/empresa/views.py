@@ -335,10 +335,17 @@ class BusinessLogoDetailVisw(DetailView):
     
 def actualizar_logo_empresa(request, business_id):
 
+
     empresa =Empresa.objects.get(pk=business_id) # get_object_or_404(Empresa, id=business_id)
 
-    if request.method == 'POST':
+    # if business_id == 'noBusiness_id':
+
+    #     empresa=False
+
+    if request.method == 'POST' and empresa:
+
         imagen = request.FILES['logo_business_pk']
+        
         if imagen:
             #fs = FileSystemStorage()
             #filename = fs.save(imagen.name, imagen)
@@ -349,13 +356,27 @@ def actualizar_logo_empresa(request, business_id):
             #return redirect('detalle_empresa', empresa_id=empresa_id)
         #else:
             #return HttpResponseBadRequest("No se ha enviado ninguna imagen")
+        #request.empresa_global = empresa
+
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))    
 
 
-    #return render(request, 'base.html', {'empresa': empresa})
-def BusinessLogoDetailView(request, id):
-    empresa = Empresa.objects.get(pk=id_empresa)
+def obtener_informacion_empresa(request, business_id):
 
-    context ={ empresa:empresa} 
+    if business_id: 
+        
+        empresa = Empresa.objects.get(id=business_id)
     
-    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))    
+        #request.empresa_global = empresa
+
+    return empresa #HttpResponseRedirect(request.META.get('HTTP_REFERER'))  
+
+
+
+#     #return render(request, 'base.html', {'empresa': empresa})
+# def BusinessLogoDetailView(request, business_id):
+#     empresa = Empresa.objects.get(pk=business_id)
+
+#     context ={ empresa:empresa} 
+    
+#     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))    
