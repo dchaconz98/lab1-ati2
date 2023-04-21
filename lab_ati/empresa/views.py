@@ -156,6 +156,7 @@ class CreateEmployeeView(CreateView):
                 "pk": self.object.pk,
             },
         )
+    
     def get_empresa(self):
 
         # Validate that Empresa exists
@@ -296,17 +297,29 @@ class ListEmployeeView(ListView):
 class DeleteEmployeeView(DeleteView):
     template_name = "pages/employees/delete.html"
     model = Empleado
+    #success_url = reverse_lazy("empresa:list-employee")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['business_id'] = self.kwargs['business_id']
-
         context["list_link"] = reverse("empresa:list-employee", kwargs={"business_id": context["business_id"]} )
         context["back_link"] = context["list_link"]
         return context
+    
+    def post(self, request, *args, **kwargs):
+        if "deleteEmployee" in request.POST:
+            self.object = self.get_object()
+            self.object.delete()
+            return HttpResponseRedirect(self.success_url)
+        else:
+            return super().post(request, *args, **kwargs)
+
 
     def get_success_url(self):
         return reverse('empresa:list-employee', kwargs={ 'business_id': self.kwargs['business_id']})
+
+    
+
 
 class DetailEmployeeView(DetailView):
     template_name = "pages/employees/detail.html"
@@ -320,18 +333,6 @@ class DetailEmployeeView(DetailView):
         context["back_link"] = context["list_link"]
         return context
 
-
-
-class BusinessLogoDetailVisw(DetailView):
-    template_name = "base.html"
-    model = Empresa
-
-    def get_context_data(self, **kwargs):
-      
-        context = super().get_context_data(**kwargs)
-
-        context["business_id"] = self.kwargs['business_id']
-        return context
     
 def actualizar_logo_empresa(request, business_id):
 
@@ -370,12 +371,3 @@ def obtener_informacion_empresa(request, business_id):
 
     return empresa #HttpResponseRedirect(request.META.get('HTTP_REFERER'))  
 
-
-
-#     #return render(request, 'base.html', {'empresa': empresa})
-# def BusinessLogoDetailView(request, business_id):
-#     empresa = Empresa.objects.get(pk=business_id)
-
-#     context ={ empresa:empresa} 
-    
-#     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))    
