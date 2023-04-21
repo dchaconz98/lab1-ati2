@@ -335,12 +335,8 @@ class BusinessLogoDetailVisw(DetailView):
     
 def actualizar_logo_empresa(request, business_id):
 
-
+    print("actualizar_logo_empresa")
     empresa =Empresa.objects.get(pk=business_id) # get_object_or_404(Empresa, id=business_id)
-
-    # if business_id == 'noBusiness_id':
-
-    #     empresa=False
 
     if request.method == 'POST' and empresa:
 
@@ -352,7 +348,10 @@ def actualizar_logo_empresa(request, business_id):
             #uploaded_file_url = fs.url(filename)
             #print(uploaded_file_url)
             empresa.logo = imagen
+
             empresa.save(update_fields=['logo'])
+            
+            request.empresa_global = empresa
             #return redirect('detalle_empresa', empresa_id=empresa_id)
         #else:
             #return HttpResponseBadRequest("No se ha enviado ninguna imagen")

@@ -58,5 +58,24 @@
 
     {% block inline_javascript %}
     {% endblock inline_javascript %}
+
+    <script>
+      const imageInputFooter = document.getElementById('image-input-footer');
+      const imageInputHeader = document.getElementById('image-input-header');
+    
+      const submitButtonHeader = document.getElementById('actualizar-logo-header');
+      const submitButtonFooter = document.getElementById('actualizar-logo-footer');
+      
+      imageInputFooter.addEventListener('change', () => {
+    
+        submitButtonFooter.click()
+      });
+      
+      imageInputHeader.addEventListener('change', () => {
+      
+        submitButtonHeader.click()
+      });
+  
+    </script>
   </body>
 </html>

@@ -9,9 +9,9 @@ class EmpresaGlobalMiddleware:
 
         response = self.get_response(request)
 
-        business_id = False
+        business_id = 'create'
         
-        empresa = { "logo" : False }
+        empresa = { "id" : False }
 
         print("******************", request.method)
         print(request.GET)
@@ -22,7 +22,7 @@ class EmpresaGlobalMiddleware:
         
         print("====>" , idPk)
 
-        opcion = ['business', 'details', 'edit', 'delete']
+        opcion = ['business', 'details', 'edit', 'delete', 'guardar-logo']
 
         if idPk[1] in 'business':
             
@@ -32,8 +32,9 @@ class EmpresaGlobalMiddleware:
 
                 business_id = idPk[3] 
 
+        print("====>" , business_id)
         if business_id in 'create' or business_id in opcion:
-            
+            print("====> false" , business_id)
             business_id = False
         
 
@@ -58,7 +59,7 @@ class EmpresaGlobalMiddleware:
         request.empresa_global = empresa
         
         response = self.get_response(request)
-
+        print(business_id)
         return response
     
 # class EmpresaGlobalMiddleware:
