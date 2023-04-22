@@ -37,6 +37,8 @@ class EmpresaABC(DirABC):
     direccion = models.TextField(_("Dirección"))
     web_site = models.URLField(_("Sitio web"))
     servicio_proporciona = models.TextField(_("Servicio que proporciona"))
+    logo = models.FileField(upload_to="images/logos", default="logo.png")
+
 
     def __str__(self):
         return f"{self.nombre} {self.id_tributaria}"
@@ -96,7 +98,7 @@ class SocialMedia(models.Model):
 class Empleado(DirABC):
 
     tlf_regex = '^\+?([0-9]{1,3}|[1]\-?[0-9]{3})?\-?([0-9]{1,4})\-?([0-9]{3}\-?[0-9]{2}\-?[0-9]{2})$'
-    ci_regex = '^(([A-Z]-)[0-9]{1,3}\.?[0-9]{1,3}\.?[0-9]{1,3})$|^([0-9A-Z]{10})$'
+    ci_regex = '^(([a-zA-Z]-)[0-9]{1,3}\.?[0-9]{1,3}\.?[0-9]{1,3})$|^([0-9A-Z]{10})$'
 
     class Modalidad(models.TextChoices):
         FIJO='FIJO', _('Fijo')

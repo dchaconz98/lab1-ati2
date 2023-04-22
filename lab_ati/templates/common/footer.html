@@ -3,9 +3,25 @@
 {% block footer %}
     <footer class="w-100 px-4 py-2 d-flex justify-content-center align-items-center custom-footer">
         <section class="flex-grow-1 d-flex justify-content-center align-items-center general-container">
-            <img src="{% static 'images/logo.png' %%}" width="40" height="40">
-            
-            <p class="mx-4 mb-0 h-6">{% trans 'Copyright' %} &#9400 2022 SA - {% trans 'Todos los derechos reservados' %}</p>
-        </section>
+            {% if request.empresa_global.id %}
+                <form method="POST" enctype="multipart/form-data" action="{% url 'empresa:update-logo-employee' request.empresa_global.id %}">
+                  {% csrf_token %}
+                  <label for="image-input-footer" class="imagenLoad">
+                    {% if request.empresa_global.logo == "logo.png" %}
+                      <img  src="{% static 'images/logo.png' %%}" width="40" height="40">
+                      {% else %}  
+                      <img src=/media/{{request.empresa_global.logo}} width="40" height="40">
+                      {% endif %}
+                    </label>
+                  <input name="logo_business_pk" id="image-input-footer" type="file" style="display: none;" accept="image/*">
+                  <input id="actualizar-logo-footer" type="submit" style="display: none;"/>
+                </form>
+                {% else %}
+                    <img id="" src="{% static 'images/logo.png' %%}" width="40" height="40">
+               
+                {% endif %}
+                <p> {{request.empresa_global.id}}</p>
+              <p class="mx-4 mb-0 h-6">{% trans 'Copyright' %} &#9400 2022 SA - {% trans 'Todos los derechos reservados' %}</p>
+          </section>
     </footer>
 {% endblock %}

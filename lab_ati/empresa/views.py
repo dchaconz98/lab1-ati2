@@ -1,6 +1,6 @@
 from django.http.response import Http404
 from django.urls.base import reverse_lazy
-
+from django.http import HttpResponseRedirect
 from django.views.generic import UpdateView, CreateView, ListView, DeleteView, DetailView, TemplateView
 from .forms import CreateBusinessForm, CreateEmployeeForm, SocialMediaFormset
 from lab_ati.empresa.models import Empleado, Empresa, SocialMedia
@@ -320,4 +320,30 @@ class DetailEmployeeView(DetailView):
         context["back_link"] = context["list_link"]
         return context
 
+
+def actualizar_logo_empresa(request, business_id):
+
+    print("actualizar_logo_empresa")
+    empresa =Empresa.objects.get(pk=business_id) # get_object_or_404(Empresa, id=business_id)
+
+    if request.method == 'POST' and empresa:
+
+        imagen = request.FILES['logo_business_pk']
+        
+        if imagen:
+            empresa.logo = imagen
+
+            empresa.save(update_fields=['logo'])
+            
+            request.empresa_global = empresa
+
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+def obtener_informacion_empresa(request, business_id):
+
+    if business_id: 
+        
+        empresa = Empresa.objects.get(id=business_id)
+    
+    return empresa 
 
