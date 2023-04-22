@@ -1,7 +1,7 @@
 from attr import attr
 from django import forms
 
-from lab_ati.empresa.models import Empleado, Empresa, SocialMedia
+from lab_ati.empresa.models import Empleado, Empresa, SocialMedia, Corporacion
 
 COUNTRY_CHOICES = (
     ("", "Selecciona..."),
@@ -12,9 +12,13 @@ COUNTRY_CHOICES = (
 
 # creating a form
 
-class CreateNewCorporativa(forms.Form):
-    name = forms.CharField(label ="Nombre de la Corporacion", max_length=200)
+class CreateNewCorporativa(forms.ModelForm):
+    #name = forms.CharField(label ="Nombre de la Corporacion", max_length=200)
+    class Meta:
+        model = Corporacion
+        fields = "__all__"
 
+   
 
 class CreateBusinessForm(forms.ModelForm):
     """

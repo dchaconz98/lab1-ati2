@@ -17,8 +17,9 @@ def BusinessListView(request):
     template_name = "pages/business/list.html"
     model = Empresa
     paginate_by = 10
-
-    objeto = Corporacion.objects.first()
+    
+    objeto = Corporacion.objects.latest('id')
+  
     print(objeto)
 
 
@@ -147,6 +148,7 @@ class BusinessDetailsView(DetailView):
         context = super().get_context_data(**kwargs)
         context["business_id"] = self.object.id
         return context
+
 class CreateEmployeeView(CreateView):
     template_name = "pages/employees/create.html"
     model = Empleado
@@ -326,14 +328,25 @@ class DetailEmployeeView(DetailView):
         return context
 
 
+class CreateEmpresaXView(CreateView):
+    template_name = "pages/business/corporacion.html"
+    model = Corporacion
+    form_class=form = CreateNewCorporativa
+    success_url = reverse_lazy("empresa:business-list")
+
+
 def create_cooperativa(request):
-    if request.method == 'GET':
-        return render(request,'pages/business/corporacion.html',{
-            'form' : CreateNewCorporativa() 
-        })
-    else:
+
+    if request.method == 'POST':
         modelo = Corporacion.objects.update(name = request.POST['name'])
        # print(modelo)
         return redirect('/business')
+        # return render(request,'pages/business/corporacion.html',{
+        #     'form' : CreateNewCorporativa() 
+        # })
+    else:
+        #modelo = Corporacion.objects.update(name = request.POST['name'])
+       # print(modelo)
+        return redirect('/business/pages/business/corporacion.html')
 
     

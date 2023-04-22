@@ -21,8 +21,11 @@ class DirABC(models.Model):
 
 
 class Corporacion(models.Model):
+    #id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.TextField(_("Corporacion"))
-    id = models.UUIDField(primary_key=True)
+
+    def __str__(self):
+        return str(self.name )
 
 
 class EmpresaABC(DirABC):

@@ -8,7 +8,10 @@
         <h2 display="inline" class="text-center pb-4"> {% trans "Empresas de la corporación" %} {{ objeto.name }} 
             <a href="/business/cooperativa">
         <button display="inline" type="button" class="mx-2 btn btn-secundary">
-            <i class="bi bi-pencil-square"></i>
+            <a href="{% url 'empresa:create-nombre-business' %}">
+            
+                <i class="bi bi-pencil-square"></i>
+            </a>
         </button>
             </a>
     </h2>
