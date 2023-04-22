@@ -1,28 +1,35 @@
 from django.http.response import Http404
 from django.urls.base import reverse_lazy
 from django.http import HttpResponseRedirect
+from .models import Corporacion
 from django.views.generic import UpdateView, CreateView, ListView, DeleteView, DetailView, TemplateView
-from .forms import CreateBusinessForm, CreateEmployeeForm, SocialMediaFormset
+from .forms import CreateBusinessForm, CreateEmployeeForm, SocialMediaFormset, CreateNewCorporativa
 from lab_ati.empresa.models import Empleado, Empresa, SocialMedia
 from django.urls import reverse
 from django.utils.translation import gettext as _
 from django.core import exceptions
-from django.shortcuts import render
+from django.shortcuts import render, redirect 
 from lab_ati.utils.social_media import add_social_media
 from django.urls import reverse
 from django.contrib import messages
 
 # Create your views here.
-class BusinessListView(ListView):
+def BusinessListView(request):
 
     template_name = "pages/business/list.html"
     model = Empresa
     paginate_by = 10
+    
+    objeto = Corporacion.objects.latest('id')
+  
+    print(objeto)
 
 
-    def get_queryset(self):
-        queryset = Empresa.objects.all()
-        return queryset
+    #def get_queryset(self):
+    empresas = Empresa.objects.all()
+    return render(request,template_name,{'empresas': empresas, 'objeto': objeto})
+
+
 
 class DeleteBusinessView(DeleteView):
     template_name = "pages/business/delete.html"
@@ -142,7 +149,6 @@ class BusinessDetailsView(DetailView):
         context = super().get_context_data(**kwargs)
         context["business_id"] = self.object.id
         return context
-
 
 class CreateEmployeeView(CreateView):
     template_name = "pages/employees/create.html"
@@ -324,7 +330,14 @@ class DetailEmployeeView(DetailView):
         return context
 
 
+class CreateEmpresaXView(CreateView):
+    template_name = "pages/business/corporacion.html"
+    model = Corporacion
+    form_class=form = CreateNewCorporativa
+    success_url = reverse_lazy("empresa:business-list")
+    
 def actualizar_logo_empresa(request, business_id):
+
 
     print("actualizar_logo_empresa")
     empresa =Empresa.objects.get(pk=business_id) # get_object_or_404(Empresa, id=business_id)
@@ -350,3 +363,21 @@ def obtener_informacion_empresa(request, business_id):
     
     return empresa 
 
+
+
+
+def create_cooperativa(request):
+
+    if request.method == 'POST':
+        modelo = Corporacion.objects.update(name = request.POST['name'])
+       # print(modelo)
+        return redirect('/business')
+        # return render(request,'pages/business/corporacion.html',{
+        #     'form' : CreateNewCorporativa() 
+        # })
+    else:
+        #modelo = Corporacion.objects.update(name = request.POST['name'])
+       # print(modelo)
+        return redirect('/business/pages/business/corporacion.html')
+
+    

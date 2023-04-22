@@ -1,0 +1,30 @@
+{% extends "../../base.html" %}
+{% load i18n %}
+{% block content %}
+<section>
+    {% include "../../common/navigation-bar.html" %}
+    <h2 class="text-center pb-4">       
+
+            {% trans "Actualiza el nombre de la corporación" %}
+        
+    </h2>
+    
+    <form method="POST" class="container text-center pb-4">
+        {% csrf_token %}
+       
+            {{form}}   
+     
+        <button display="inline" type="submit" class="mx-2 btn btn-primary">
+            {% trans "Guardar" %}
+        </button>
+    </form>
+
+
+
+    
+         
+{% endblock %}
+
+{% block inline_javascript %}
+    
+{% endblock %}
