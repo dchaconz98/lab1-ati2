@@ -22,8 +22,8 @@ services:
     env_file:
       - ./.envs/.local/.django
       - ./.envs/.local/.postgres
-    #entrypoint: ["bash", "init.sh"]
-    entrypoint: ["python","manage.py","runserver", "0.0.0.0:8000"]
+    entrypoint: ["bash", "init.sh"]
+    #entrypoint: ["python","manage.py","runserver", "0.0.0.0:8000"]
     ports:
       - "8000:8000"
 
