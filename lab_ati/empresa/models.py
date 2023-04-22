@@ -1,4 +1,5 @@
 import uuid
+from django.db.models import UUIDField
 from django.db import models
 from django.contrib.contenttypes.fields import GenericRelation
 from django.utils.translation import gettext_lazy as _
@@ -22,7 +23,6 @@ class DirABC(models.Model):
 
 class Corporacion(models.Model):
     name = models.TextField(_("Corporacion"))
-    id = models.UUIDField(primary_key=True)
 
 
 class EmpresaABC(DirABC):
