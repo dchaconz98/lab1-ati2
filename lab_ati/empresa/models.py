@@ -19,6 +19,12 @@ class DirABC(models.Model):
     class Meta:
         abstract = True
 
+
+class Corporacion(models.Model):
+    name = models.TextField(_("Corporacion"))
+    id = models.UUIDField(primary_key=True)
+
+
 class EmpresaABC(DirABC):
     email_regex = '^[a-z0-9!#$%&\'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&\'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$'
 
@@ -74,6 +80,7 @@ class Empresa(EmpresaABC):
         verbose_name=_("Cliente de empresa"),
         related_name="clientes_empresa",
     )
+    
 
 # Generic Model
 class SocialMedia(models.Model):

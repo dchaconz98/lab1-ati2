@@ -6,6 +6,7 @@
   <h2 class="text-center pb-4">{% trans 'Información del proveedor' %}</h2>
   <div class="container col-10 mx-auto">
     <h5>{% trans 'Proveedor' %}</h5>
+    
     <table class="table">
       <tbody>
         <tr>
@@ -18,8 +19,14 @@
         </tr>
         <tr>
           <td>{% trans 'Teléfono' %}</td>
-          <td>{{proveedor.tlf}}</td>
+          <td>{{proveedor.tlf}}</td>  
         </tr>
+        {% if field.name == 'Teléfono' or field.name == 'tlf' %}
+                    <span class="text-info text-xs">
+                        <i class="bi bi-info-circle"></i>
+                        {% trans 'Formatos válidos de número de teléfono: +58-0212-123-1234, +58-0212-123-12-34, +5802121231234' %}
+                    </span>
+                {% endif %}
         <tr>
           <td>{% trans 'País' %}</td>
           <td>{{proveedor.pais}}</td>

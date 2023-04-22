@@ -1,27 +1,32 @@
 from django.http.response import Http404
 from django.urls.base import reverse_lazy
-
+from .models import Corporacion
 from django.views.generic import UpdateView, CreateView, ListView, DeleteView, DetailView, TemplateView
-from .forms import CreateBusinessForm, CreateEmployeeForm, SocialMediaFormset
+from .forms import CreateBusinessForm, CreateEmployeeForm, SocialMediaFormset, CreateNewCorporativa
 from lab_ati.empresa.models import Empleado, Empresa, SocialMedia
 from django.urls import reverse
 from django.utils.translation import gettext as _
 from django.core import exceptions
-from django.shortcuts import render
+from django.shortcuts import render, redirect 
 from lab_ati.utils.social_media import add_social_media
 from django.urls import reverse
 
 # Create your views here.
-class BusinessListView(ListView):
+def BusinessListView(request):
 
     template_name = "pages/business/list.html"
     model = Empresa
     paginate_by = 10
 
+    objeto = Corporacion.objects.first()
+    print(objeto)
 
-    def get_queryset(self):
-        queryset = Empresa.objects.all()
-        return queryset
+
+    #def get_queryset(self):
+    empresas = Empresa.objects.all()
+    return render(request,template_name,{'empresas': empresas, 'objeto': objeto})
+
+
 
 class DeleteBusinessView(DeleteView):
     template_name = "pages/business/delete.html"
@@ -321,3 +326,14 @@ class DetailEmployeeView(DetailView):
         return context
 
 
+def create_cooperativa(request):
+    if request.method == 'GET':
+        return render(request,'pages/business/corporacion.html',{
+            'form' : CreateNewCorporativa() 
+        })
+    else:
+        modelo = Corporacion.objects.update(name = request.POST['name'])
+       # print(modelo)
+        return redirect('/business')
+
+    

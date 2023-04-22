@@ -10,8 +10,12 @@ COUNTRY_CHOICES = (
     ("es", "España"),
 )
 
-
 # creating a form
+
+class CreateNewCorporativa(forms.Form):
+    name = forms.CharField(label ="Nombre de la Corporacion", max_length=200)
+
+
 class CreateBusinessForm(forms.ModelForm):
     """
     Formulario del modelo empleado

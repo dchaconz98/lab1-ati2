@@ -3,7 +3,16 @@
 
 {% block content %}
     <section>
-        <h2 class="text-center pb-4"> {% trans "Empresas de la corporación X" %}<h2>
+        
+        <div>
+        <h2 display="inline" class="text-center pb-4"> {% trans "Empresas de la corporación" %} {{ objeto.name }} 
+            <a href="/business/cooperativa">
+        <button display="inline" type="button" class="mx-2 btn btn-secundary">
+            <i class="bi bi-pencil-square"></i>
+        </button>
+            </a>
+    </h2>
+        </div>
         <form method="POST" class="container d-grid gap-3 pb-4">
             {% csrf_token %}
             <section class="row">
@@ -35,7 +44,7 @@
                     </thead>
 
                     <tbody>
-                        {% for business in object_list %}
+                        {% for business in empresas %}
                             <tr>
                                 <td>
                                     {{ business.nombre }}

@@ -9,3 +9,9 @@ RUN rm -f /etc/apt/apt.conf.d/docker-clean
 RUN --mount=type=cache,target=/var/cache/apt \
   apt-get update && apt-get install -yqq --no-install-recommends \
   gettext && rm -rf /var/lib/apt/lists/*
+
+
+COPY ./requirements /requirements
+RUN pip install --no-cache-dir -r /requirements/local.txt
+
+WORKDIR /app
