@@ -1,9 +1,19 @@
 {% extends "../../base.html" %}
 {% load i18n %}
-
 {% block content %}
 <section class="general-container">
     <h2 class="text-center pb-4">{% trans "Lista de empleados" %}</h2>
+    <!-- {% for message in messages %}
+            <div class="toast align-items-center show" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                <div class="toast-body">
+                        {{ message }}
+                </div>
+                <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            </div>
+    {% endfor %} -->
+     
     <form method="POST" class="container d-grid gap-3 pb-4">
         {% csrf_token %}
 
@@ -76,4 +86,16 @@
 </section>
 {% endblock content %}
 {% block inline_javascript %}
+<!-- <script>
+    // Obtenemos todos los elementos .toast
+    let toasts = document.querySelectorAll('.toast');
+    
+    // Recorremos los elementos y establecemos un temporizador para cerrarlos
+    toasts.forEach((toast) => {
+        setTimeout(() => {
+            // Ocultamos el toast después de 5 segundos
+            toast.hide();
+        }, 5000); // Establecemos un tiempo de espera de 5 segundos
+    });
+    </script> -->
 {% endblock %}

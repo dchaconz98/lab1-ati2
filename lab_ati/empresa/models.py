@@ -98,7 +98,7 @@ class SocialMedia(models.Model):
 class Empleado(DirABC):
 
     tlf_regex = '^\+?([0-9]{1,3}|[1]\-?[0-9]{3})?\-?([0-9]{1,4})\-?([0-9]{3}\-?[0-9]{2}\-?[0-9]{2})$'
-    ci_regex = '^(([a-zA-Z]-)[0-9]{1,3}\.?[0-9]{1,3}\.?[0-9]{1,3})$|^([0-9A-Z]{10})$'
+    ci_regex = '^(([a-zA-Z]{3}|[a-zA-Z]-)[0-9]{1,3}\.?[0-9]{1,3}\.?[0-9]{1,3})$|^([0-9A-Z]{10})$'
 
     class Modalidad(models.TextChoices):
         FIJO='FIJO', _('Fijo')

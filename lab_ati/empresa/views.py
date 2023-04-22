@@ -10,6 +10,7 @@ from django.core import exceptions
 from django.shortcuts import render
 from lab_ati.utils.social_media import add_social_media
 from django.urls import reverse
+from django.contrib import messages
 
 # Create your views here.
 class BusinessListView(ListView):
@@ -133,7 +134,6 @@ class EditBusinessView(UpdateView):
         context["business_id"] = self.object.id
         return context
 
-
 class BusinessDetailsView(DetailView):
     template_name = "pages/business/detail.html"
     model = Empresa
@@ -142,6 +142,8 @@ class BusinessDetailsView(DetailView):
         context = super().get_context_data(**kwargs)
         context["business_id"] = self.object.id
         return context
+
+
 class CreateEmployeeView(CreateView):
     template_name = "pages/employees/create.html"
     model = Empleado
@@ -278,6 +280,7 @@ class EditEmployeeView(UpdateView):
 
         return context
 
+
 class ListEmployeeView(ListView):
     template_name = "pages/employees/list.html"
     model = Empleado
@@ -298,9 +301,9 @@ class DeleteEmployeeView(DeleteView):
     model = Empleado
 
     def get_context_data(self, **kwargs):
+        
         context = super().get_context_data(**kwargs)
         context['business_id'] = self.kwargs['business_id']
-
         context["list_link"] = reverse("empresa:list-employee", kwargs={"business_id": context["business_id"]} )
         context["back_link"] = context["list_link"]
         return context
@@ -311,7 +314,7 @@ class DeleteEmployeeView(DeleteView):
 class DetailEmployeeView(DetailView):
     template_name = "pages/employees/detail.html"
     model = Empleado
-
+    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['business_id'] = self.kwargs['business_id']
