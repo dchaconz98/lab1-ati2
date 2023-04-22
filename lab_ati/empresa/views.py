@@ -2,7 +2,7 @@ from django.http.response import Http404
 from django.urls.base import reverse_lazy
 from django.http import HttpResponseRedirect
 from .models import Corporacion
-from django.views.generic import UpdateView, CreateView, ListView, DeleteView, DetailView, TemplateView
+from django.views.generic import UpdateView, CreateView, ListView, DeleteView, DetailView, TemplateView, View
 from .forms import CreateBusinessForm, CreateEmployeeForm, SocialMediaFormset, CreateNewCorporativa
 from lab_ati.empresa.models import Empleado, Empresa, SocialMedia
 from django.urls import reverse
@@ -364,7 +364,13 @@ def obtener_informacion_empresa(request, business_id):
     return empresa 
 
 
-
+class crearEmpresa(View):
+    def get(self, request, *args, **kwargs):
+        x = Corporacion(name="ABCD")
+        x.save()
+        return HttpResponseRedirect(
+            reverse("empresa:business-list")
+        )
 
 def create_cooperativa(request):
 

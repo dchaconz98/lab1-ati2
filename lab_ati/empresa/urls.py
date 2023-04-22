@@ -17,4 +17,5 @@ urlpatterns = [
     path("<slug:business_id>/employees/delete/<slug:pk>", views.DeleteEmployeeView.as_view(), name="delete-employee"),
     path("<slug:business_id>/employees/<slug:pk>", views.DetailEmployeeView.as_view(), name="detail-employee"),
     path("guardar-logo/<slug:business_id>", views.actualizar_logo_empresa, name="update-logo-employee"),
+    path("crear-empresa-primera", views.crearEmpresa, name="createdEmpresaPrimero" )
 ]
