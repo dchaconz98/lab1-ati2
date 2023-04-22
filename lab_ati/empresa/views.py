@@ -20,6 +20,9 @@ def BusinessListView(request):
     model = Empresa
     paginate_by = 10
     
+    objeto = Corporacion.objects.order_by('-id').first()
+    if objeto is None:
+        objeto = {}
     objeto = Corporacion.objects.latest('id')
   
     print(objeto)
@@ -335,6 +338,7 @@ class CreateEmpresaXView(CreateView):
     model = Corporacion
     form_class=form = CreateNewCorporativa
     success_url = reverse_lazy("empresa:business-list")
+
     
 def actualizar_logo_empresa(request, business_id):
 
@@ -366,7 +370,7 @@ def obtener_informacion_empresa(request, business_id):
 
 class crearEmpresa(View):
     def get(self, request, *args, **kwargs):
-        x = Corporacion(name="ABCD")
+        x = Corporacion(id=2, name="ABCD")
         x.save()
         return HttpResponseRedirect(
             reverse("empresa:business-list")

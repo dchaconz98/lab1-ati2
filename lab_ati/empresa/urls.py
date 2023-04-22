@@ -6,7 +6,7 @@ app_name = "empresa"
 urlpatterns = [
     path("", views.BusinessListView, name="business-list"),
     path("create", views.CreateBusinessView.as_view(), name="create-business"),
-    path("create-nombre-empresa", views.CreateEmpresaXView.as_view(), name="create-nombre-business"),
+    path("create/empresa", views.CreateEmpresaXView.as_view(), name="create-nombre-business"),
     path("details/<slug:pk>", views.BusinessDetailsView.as_view(), name="business-details"),
     path("cooperativa", views.create_cooperativa, name="create_coorporacion"),
     path("edit/<slug:pk>", views.EditBusinessView.as_view(), name="edit-business"),
@@ -17,5 +17,5 @@ urlpatterns = [
     path("<slug:business_id>/employees/delete/<slug:pk>", views.DeleteEmployeeView.as_view(), name="delete-employee"),
     path("<slug:business_id>/employees/<slug:pk>", views.DetailEmployeeView.as_view(), name="detail-employee"),
     path("guardar-logo/<slug:business_id>", views.actualizar_logo_empresa, name="update-logo-employee"),
-    path("crear-empresa-primera", views.crearEmpresa, name="createdEmpresaPrimero" )
+    path("crear-empresa-primera", views.crearEmpresa.as_view(), name="createdEmpresaPrimero" )
 ]

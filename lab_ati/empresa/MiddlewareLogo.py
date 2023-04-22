@@ -25,6 +25,7 @@ class EmpresaGlobalMiddleware:
 
             return response
 
+
         idPk =request.path.split('/')
 
         opcion = ['business', 'details', 'edit', 'delete', 'guardar-logo']
